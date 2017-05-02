@@ -4,15 +4,9 @@ class SessionsController < ApplicationController
   end
 
   def create
-    admin_user = "admin"
-    # user = User.find_by(email: params[:session][:email].downcase)
+    # admin_user = "admin"
     user = User.find_by(username: params[:session][:username])
-    if user == admin_user
-      if user && user.authenticate(params[:session][:password])
-         log_in user
-         redirect_to admin_path
-      end
-    elsif user && user.authenticate(params[:session][:password])
+    if user && user.authenticate(params[:session][:password])
       log_in user
       redirect_to user
       # Log the user in and redirect to the user's show page.
@@ -27,5 +21,5 @@ class SessionsController < ApplicationController
     log_out
     redirect_to root_url
   end
-  
+
 end

@@ -3,6 +3,7 @@ module SessionsHelper
   # Logs in the given user.
   def log_in(user)
     session[:user_id] = user.id
+    # session[:user_admin] = user.admin
   end
 
   # Returns the current logged-in user (if any).
@@ -14,6 +15,17 @@ module SessionsHelper
   def logged_in?
     !current_user.nil?
   end
+
+  
+
+  # def current_user_admin
+  #   @current_user_admin ||= User.find_by(admin: session[:user_admin])
+  # end
+  
+  # # Admin checker
+  # def logged_admin
+  #   return current_user_admin
+  # end
 
   # Logs out the current user.
   def log_out
