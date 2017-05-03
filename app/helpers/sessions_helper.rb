@@ -16,15 +16,10 @@ module SessionsHelper
     !current_user.nil?
   end
 
-  
-
-  # def current_user_admin
-  #   @current_user_admin ||= User.find_by(admin: session[:user_admin])
-  # end
-  
-  # # Admin checker
-  # def logged_admin
-  #   return current_user_admin
+  # def admin?
+  #   if logged_in?
+  #     !current_user.admin?
+  #   end
   # end
 
   # Logs out the current user.
@@ -32,5 +27,12 @@ module SessionsHelper
     session.delete(:user_id)
     @current_user = nil
   end
+
+  private
+
+     def verify_is_admin?
+       # (current_user.nil?) ? redirect_to(root_path) : (redirect_to(root_path) unless current_user.admin?)
+      (current_user.nil?) ? redirect_to(root_path) : (redirect_to(root_path) unless current_user.admin?)
+   end
   
 end
