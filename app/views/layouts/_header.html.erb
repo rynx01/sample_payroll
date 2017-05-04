@@ -8,7 +8,7 @@
         
           <% if logged_in? && current_user.admin? %>
           <li><%= link_to "New Account", signup_path %></li>
-          <li><%= link_to "Employees", '#' %></li>
+          <li><%= link_to "Employees", users_path %></li>
           <li><%= link_to "Reimbursements", '#' %></li>
           <li><%= link_to "Payrolls", '#' %></li>
           <li class="dropdown">
@@ -17,7 +17,7 @@
             </a>
             <ul class="dropdown-menu">
               <li><%= link_to "Profile", current_user %></li>
-              <li><%= link_to "Edit Profile", '#' %></li>
+              <li><%= link_to "Edit Profile", edit_user_path(current_user) %></li>
               <li><%= link_to "Account Settings", '#' %></li>
               <li class="divider"></li>
               <li>
@@ -35,7 +35,7 @@
             </a>
             <ul class="dropdown-menu">
               <li><%= link_to "Profile", current_user %></li>
-              <li><%= link_to "Edit Profile", '#' %></li>
+              <li><%= link_to "Edit Profile", edit_user_path(current_user) %></li>
               <li><%= link_to "Account Settings", '#' %></li>
               <li class="divider"></li>
               <li>

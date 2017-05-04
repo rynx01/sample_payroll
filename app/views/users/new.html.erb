@@ -14,6 +14,27 @@
 
       <%= f.label :password_confirmation, "Password Confirmation" %>
       <%= f.password_field :password_confirmation, class: 'form-control' %>
+
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control' %>
+
+      <%= f.label :birthday, "Birthday (mm/dd/yyyy)" %>
+      <%= f.text_field :birthday, class: 'form-control' %>
+
+      <%= f.label :contact_no, "Contact Number" %>
+      <%= f.text_field :contact_no, class: 'form-control' %>
+
+      <%= f.label :account_no, "Account Number" %>
+      <%= f.text_field :account_no, class: 'form-control' %>
+
+      <%= f.label :bank, "Bank" %>
+      <%= f.text_field :bank, class: 'form-control' %>
+
+      <%= f.label :base_salary, "Base Salary" %>
+      <%= f.text_field :base_salary, class: 'form-control' %>
+
+      <%= f.label :no_of_dependents, "No. of Dependents" %>
+      <%= f.text_field :no_of_dependents, class: 'form-control' %>
       
       <%= f.label :admin %>
       <%= f.check_box :admin, class: 'form-control' %>

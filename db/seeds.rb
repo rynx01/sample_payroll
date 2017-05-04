@@ -10,4 +10,21 @@
 User.create!(username:  "admin",
              password:              "admin",
              password_confirmation: "admin",
-             admin: true)
+             admin: true,
+             name:  "admin",
+             birthday:  "05061988",
+             contact_no:  "0",
+             account_no:  "0",
+             bank:  "bdo",
+             base_salary:  "0",
+             no_of_dependents: "0"
+             )
+
+99.times do |n|
+  name  = Faker::Name.name
+  username = "example-#{n+1}@railstutorial.org"
+  password = "password"
+  User.create!(username:  username,
+               password:              password,
+               password_confirmation: password)
+end

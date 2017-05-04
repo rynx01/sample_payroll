@@ -11,6 +11,18 @@ $gray-medium-light: #eaeaea;
   box-sizing:         border-box;
 }
 
+/* Users index */
+
+.users {
+  list-style: none;
+  margin: 0;
+  li {
+    overflow: auto;
+    padding: 10px 0;
+    border-bottom: 1px solid $gray-lighter;
+  }
+}
+
 /* universal */
 
 body {
@@ -183,3 +195,22 @@ input {
     color: $state-danger-text;
   }
 }
+
+/* reimbursements */
+
+.reimbursements h1 {
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin: 100px, 50px, 30px, 30px;
+}
+
+/* payslips */
+
+.payslips h1 {
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: right;
+}
+
+
