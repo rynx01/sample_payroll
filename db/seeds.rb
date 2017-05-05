@@ -17,7 +17,8 @@ User.create!(username:  "admin",
              account_no:  "0",
              bank:  "bdo",
              base_salary:  "0",
-             no_of_dependents: "0"
+             no_of_dependents: "0",
+             status: "Single"
              )
 
 99.times do |n|

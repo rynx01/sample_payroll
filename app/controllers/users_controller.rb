@@ -4,6 +4,8 @@ class UsersController < ApplicationController
   before_action :correct_user,   only: [:edit, :update]
 
   def reimbursements
+    @user = User.find(params[:id])
+    @reimbursements = @user.reimbursements.paginate(page: params[:page])
   end
 
   def payslips
@@ -15,6 +17,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @reimbursements = @user.reimbursements.paginate(page: params[:page])
   end
 
   def destroy
