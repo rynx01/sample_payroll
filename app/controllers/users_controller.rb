@@ -1,11 +1,10 @@
 class UsersController < ApplicationController
-  # before_filter :verify_is_admin, :except => [:create]
+  #before_filter :verify_is_admin, :except => [:create]
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
   before_action :correct_user,   only: [:edit, :update]
 
   def reimbursements
-    @user = User.find(params[:id])
-    @reimbursements = @user.reimbursements.paginate(page: params[:page])
+   
   end
 
   def payslips
