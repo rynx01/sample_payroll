@@ -14,7 +14,7 @@
     <div class="col-md-8">
     
             <% if @user.reimbursements.any? %>
-            <h3> Reimbursements (<%= @user.reimbursements.count %>)</h3>
+            <h1> Reimbursements (<%= @user.reimbursements.count %>)</h1>
             <ol class="reimbursements">
             <%= render @reimbursements %>
             </ol>

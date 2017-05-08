@@ -3,9 +3,16 @@
   
   <span class="category"><h4>Category:</h4><%= reimbursement.category %></span>
   <span class="description"><h4>Description:</h4><%= reimbursement.description %></span>
-  <span class="amount"><h4>Amount:</h4><%= reimbursement.amount %></li>
+  <span class="amount"><h4>Amount:</h4><%= reimbursement.amount %></span>
   <span class="timestamp">
     Posted <%= time_ago_in_words(reimbursement.created_at) %> ago.
   </span>
+  <% if current_user?(reimbursement.user) %>
+      <%= link_to "edit", reimbursement, method: :edit,
+                                       data: { confirm: "You sure?" } %>
+                                       |
+      <%= link_to "delete", reimbursement, method: :delete,
+                                       data: { confirm: "You sure?" } %>
+  <% end %>
 
 </li>
