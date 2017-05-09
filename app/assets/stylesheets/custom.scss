@@ -25,14 +25,25 @@ $gray-medium-light: #eaeaea;
     margin-top: 5em;
     padding-top: 0;
   }
-  .content {
+  .category {
     display: block;
-    margin-left: 60px;
+    margin-left: 0px;
     img {
       display: block;
       padding: 5px 0;
     }
   }
+
+  h4{
+  color: green;
+    display: block;
+    margin-left: 0px;
+    img {
+      display: block;
+      padding: 5px 0;
+    }
+  }
+
   .timestamp {
     color: $gray-light;
     display: block;
