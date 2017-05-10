@@ -14,23 +14,23 @@ class ReimbursementsController < ApplicationController
 	def show
 		# render html: "hello, world!"
 	   @user = User.find(params[:user_id])
-	   @reimbursements = @user.reimbursements.find(params[:id]).paginate(page: params[:page])
+	   @reimbursements = Reimbursement.find(params[:id])
 	end
 
-  def destroy
+   def destroy
     @user = User.find(params[:user_id])
     @reimbursements = @user.reimbursements.find(params[:id])
     @reimbursements.destroy
     redirect_to user_path
-  end
+   end
 
-  def create
+   def create
   	@user = User.find(params[:user_id])
     @reimbursements = @user.reimbursements.create(reimbursements_params)
     redirect_to user_path
-  end
+   end
 
-  private
+   private
     def reimbursements_params
       params.require(:reimbursements).permit(:category, :description, :amount)
     end

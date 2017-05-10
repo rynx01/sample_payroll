@@ -38,6 +38,19 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit_reimbursements
+    @user = User.find(params[:user_id])
+    @reimbursements = @user.reimbursements.find(params[:id])
+  end
+
+  def update_reimbursements
+  end
+
+  def destroy_reimbursements
+  end
+    
+
+
   def edit
     @user = User.find(params[:id])
   end

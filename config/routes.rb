@@ -18,4 +18,6 @@ Rails.application.routes.draw do
    # resources :allowances
   end
 
+  # resources :reimbursements
+
 end
