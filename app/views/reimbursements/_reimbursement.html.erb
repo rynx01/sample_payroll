@@ -1,8 +1,6 @@
-<% if logged_in? && current_user.admin? %>
-
 <li id="reimbursement-<%= reimbursement.id %>">
   
-  <span class="user"><%= link_to reimbursement.user.name, reimbursement.user %></span>
+  
   <span class="category"><h4>Category:</h4><%= reimbursement.category %></span>
   <span class="description"><h4>Description:</h4><%= reimbursement.description %></span>
   <span class="amount"><h4>Amount:</h4>₱<%= reimbursement.amount %></span>
@@ -10,25 +8,6 @@
     Posted <%= time_ago_in_words(reimbursement.created_at) %> ago.
   </span>
   
+ 
+
 </li>
-
- <% elsif logged_in? && !current_user.admin? %>
-
-    <li id="reimbursement-<%= reimbursement.id %>">
-
-    <% if current_user && reimbursement.user.username %>
-    
-    <span class="user"><%= link_to reimbursement.user.name, reimbursement.user %></span>
-    <span class="category"><h4>Category:</h4><%= reimbursement.category %></span>
-    <span class="description"><h4>Description:</h4><%= reimbursement.description %></span>
-    <span class="amount"><h4>Amount:</h4>₱<%= reimbursement.amount %></span>
-    <span class="timestamp">
-      Posted <%= time_ago_in_words(reimbursement.created_at) %> ago. </span>
-
-   <% end %>
-  
-  </li>
-
-<% else %>
-          <h1>Please Log in<%= link_to " Login", login_path %></h1>
- <% end %>

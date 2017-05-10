@@ -4,13 +4,17 @@ class ReimbursementsController < ApplicationController
 	def index
 		  # render html: "hello, world!"
 	  @user = User.find(params[:user_id])
-	  @reimbursements = Reimbursement.paginate(page: params[:page])
+	 	if logged_in? && current_user.admin?
+	  		@reimbursements = Reimbursement.paginate(page: params[:page])
+		else
+			@reimbursements = @user.reimbursements.all.paginate(page: params[:page])
+		end
 	end
 
 	def show
 		# render html: "hello, world!"
 	   @user = User.find(params[:user_id])
-	   @reimbursements = Reimbursement.paginate(page: params[:page])
+	   @reimbursements = @user.reimbursements.find(params[:id]).paginate(page: params[:page])
 	end
 
   def destroy
