@@ -13,6 +13,9 @@ Rails.application.routes.draw do
 
   resources :users do
    resources :reimbursements
+   # resources :nope_adjustments
+   # resources :dope_adjustments
+   # resources :allowances
   end
 
 end

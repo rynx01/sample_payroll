@@ -14,7 +14,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @reimbursements = @user.reimbursements.paginate(page: params[:page])
+    # @reimbursements = @user.reimbursements.paginate(page: params[:page])
   end
 
   def destroy
@@ -40,16 +40,6 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-  end
-
-  def edit_reimbursement
-    @reimbursements = Reimbursement.find(params[:id])
-  end
-
-  def delete_reimbursement
-    Reimbursement.find(params[:id]).destroy
-    flash[:success] = "Reimbursement deleted"
-    redirect_to users_url
   end
 
   def update

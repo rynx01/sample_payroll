@@ -5,12 +5,26 @@
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "Home", root_path %></li>
 
-        
           <% if logged_in? && current_user.admin? %>
           <li><%= link_to "New Account", signup_path %></li>
           <li><%= link_to "Employees", users_path %></li>
-          <li><%= link_to "Reimbursements", user_reimbursements_path(current_user) %></li>
+
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              Reimbursements <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Reimbursements", user_reimbursements_path(current_user) %></li>
+              <li><%= link_to "Allowances", '#' %></li>
+              <li><%= link_to "+ Adjustments", '#' %></li>
+              <li><%= link_to "- Adjustments", '#' %></li>
+              
+            </ul>
+          </li>
+
+          
           <li><%= link_to "Payrolls", '#' %></li>
+
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               Account <b class="caret"></b>
@@ -25,9 +39,22 @@
               </li>
             </ul>
           </li>
+          
 
           <% elsif logged_in? && !current_user.admin? %>
-          <li><%= link_to "Reimbursements", '#' %></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              Reimbursements <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Reimbursements", user_reimbursements_path(current_user) %></li>
+              <li><%= link_to "Allowances", '#' %></li>
+              <li><%= link_to "+ Adjustments", '#' %></li>
+              <li><%= link_to "- Adjustments", '#' %></li>
+              
+            </ul>
+          </li>
+
           <li><%= link_to "Payslips", '#' %></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -47,7 +74,6 @@
         <% else %>
           <li><%= link_to "Log in", login_path %></li>
         <% end %>
-
       </ul>
     </nav>
   </div>
