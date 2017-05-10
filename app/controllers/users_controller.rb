@@ -42,6 +42,16 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def edit_reimbursement
+    @reimbursements = Reimbursement.find(params[:id])
+  end
+
+  def delete_reimbursement
+    Reimbursement.find(params[:id]).destroy
+    flash[:success] = "Reimbursement deleted"
+    redirect_to users_url
+  end
+
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)

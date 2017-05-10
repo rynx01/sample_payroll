@@ -10,20 +10,5 @@
   </aside>
 
 
-
-    <div class="col-md-8">
-    
-            <% if @user.reimbursements.any? %>
-            <h1> Reimbursements (<%= @user.reimbursements.count %>)</h1>
-            <ol class="reimbursements">
-            <%= render @reimbursements %>
-            </ol>
-            <%= will_paginate @reimbursements %>
-            <% end %>
-
-    </div>
-
-
-
 </div>
 
