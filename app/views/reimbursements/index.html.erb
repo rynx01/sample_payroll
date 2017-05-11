@@ -19,6 +19,9 @@
             <%= render @reimbursements %>
             </ol>
             <%= will_paginate @reimbursements %>
+            <% else %>
+            <h1> Reimbursements </h1>
+            <%= link_to "+Add new reimbursement", new_user_reimbursement_path %>
             <% end %>
 
     </div>

@@ -6,14 +6,18 @@
   <span class="amount"><h4>Amount:</h4>₱<%= reimbursement.amount %></span>
 
 
-    <% if current_user?(reimbursement.user) %>
+    <% if current_user?(reimbursement.user) || logged_in? && current_user.admin? %>
      <br>
       <%= link_to "Add", new_user_reimbursement_path(id: reimbursement.id,reimbursement: reimbursement), data: { confirm: "Add new reimbursement?" } %>
-     |
-      <%= link_to "Edit", edit_user_reimbursement_path(id: reimbursement.id, reimbursement: reimbursement), data: { confirm: "Edit reimbursement?" } %>
-     | 
-      <%= link_to "Delete", 'reimbursements#destroy', method: :delete,
-                                       data: { confirm: "Delete reimbursement?" } %>
+
+       <% if logged_in? && current_user.admin? %>
+        |
+        <%= link_to "Edit", edit_user_reimbursement_path(id: reimbursement.id, reimbursement: reimbursement), data: { confirm: "Edit reimbursement?" } %>
+        | 
+        <%= link_to "Delete", user_reimbursements_path, method: :delete,
+                                      data: { confirm: "Delete reimbursement?" } %>
+       <% end %>
+
     <% end %>
 
   <span class="timestamp">

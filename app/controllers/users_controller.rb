@@ -3,10 +3,6 @@ class UsersController < ApplicationController
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
   before_action :correct_user,   only: [:edit, :update]
   
-  # def reimbursements
-  #   @user = User.find(params[:id])
-  #   @reimbursements = @user.reimbursements.paginate(page: params[:page])
-  # end
   
   def index
     @users = User.paginate(page: params[:page])
@@ -14,7 +10,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    # @reimbursements = @user.reimbursements.paginate(page: params[:page])
+    
   end
 
   def destroy
