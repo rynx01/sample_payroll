@@ -1,13 +1,28 @@
 <li id="reimbursement-<%= reimbursement.id %>">
   
-  
+  <span class="user"><%= link_to reimbursement.user.name, reimbursement.user %></span>
   <span class="category"><h4>Category:</h4><%= reimbursement.category %></span>
   <span class="description"><h4>Description:</h4><%= reimbursement.description %></span>
   <span class="amount"><h4>Amount:</h4>₱<%= reimbursement.amount %></span>
+
+
+    <% if current_user?(reimbursement.user) %>
+     <br>
+      <%= link_to "Add", new_user_reimbursement_path(id: reimbursement.id,reimbursement: reimbursement), data: { confirm: "Add new reimbursement?" } %>
+     |
+      <%= link_to "Edit", edit_user_reimbursement_path(id: reimbursement.id, reimbursement: reimbursement), data: { confirm: "Edit reimbursement?" } %>
+     | 
+      <%= link_to "Delete", 'reimbursements#destroy', method: :delete,
+                                       data: { confirm: "Delete reimbursement?" } %>
+    <% end %>
+
   <span class="timestamp">
-    Posted by <%= reimbursement.user.name %> <%= time_ago_in_words(reimbursement.created_at) %> ago.
+    Posted  <%= time_ago_in_words(reimbursement.created_at) %> ago.
+
+
   </span>
   
- 
+
+
 
 </li>

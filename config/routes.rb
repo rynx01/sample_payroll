@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   # delete    '/delete_reimbursements',  to: 'reimbursements#destroy' 
 
   resources :users do
-   resources :reimbursements
+   resources :reimbursements, only: [:edit, :delete, :create, :update, :destroy, :new, :index]
    # resources :nope_adjustments
    # resources :dope_adjustments
    # resources :allowances

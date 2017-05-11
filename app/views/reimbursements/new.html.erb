@@ -1,0 +1,24 @@
+<% provide(:title, "Edit user reimbursement") %>
+<h1>Edit your reimbursement</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for [@user, @reimbursement] do |f| %>
+      <%= render 'shared/error_messages' %>
+
+      <%= f.label :category %>
+      <%= select(:reimbursement, :category, [['Food', 1], ['Transpo', 2]]) %>
+
+      <%= f.label :description %>
+      <%= f.text_field :description, class: 'form-control' %>
+
+      <%= f.label :amount, "Amount" %>
+      <%= f.text_field :amount, class: 'form-control' %>
+
+      
+      <%= f.submit "Save changes", class: "btn btn-primary" %>
+    <% end %>
+
+    
+  </div>
+</div>
