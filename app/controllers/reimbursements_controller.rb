@@ -21,12 +21,12 @@ class ReimbursementsController < ApplicationController
 
    def edit
    	@user = User.find(params[:user_id])
-   	@reimbursement = @user.reimbursements.find(params[:reimbursement])
+    @reimbursement = Reimbursement.find(params[:id])
    end
 
    def update
    	@user = User.find(params[:user_id])
-   	@reimbursement = @user.reimbursements.find(params[:id])
+   	@reimbursement = Reimbursement.find(params[:id])
     if @reimbursement.update_attributes(reimbursements_params)
       flash[:success] = "Reimbursement updated"
       redirect_to user_reimbursements_path
@@ -38,10 +38,9 @@ class ReimbursementsController < ApplicationController
    def destroy
    	@user = User.find(params[:user_id])
    	@reimbursement = @user.reimbursements.find(params[:id])
-   	byebug
-    @reimbursement.destroy
-    flash.now[:success] = "Reimbursement deleted"
-    redirect_to request.referrer || root_url
+   	@reimbursement.destroy
+    flash[:success] = "Reimbursement deleted"
+    redirect_to user_reimbursements_path
    end
 
    def create
@@ -49,7 +48,7 @@ class ReimbursementsController < ApplicationController
   	@reimbursements = @user.reimbursements.new(reimbursements_params)
     if @reimbursements.save
       flash[:success] = "Reimbursement successfully created."
-      redirect_to root_url
+      redirect_to user_reimbursements_path
       # Handle a successful save.
     else
       render 'new'

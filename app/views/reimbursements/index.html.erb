@@ -12,16 +12,19 @@
 
 
     <div class="col-md-8">
-    
-            <% if @user.reimbursements.any? %>
+            
+
             <h1> Reimbursements </h1>
+            <h3><%= link_to "+Add new reimbursement?", new_user_reimbursement_path %></h3>
+            <% if @user.reimbursements.any? %>
+            
             <ol class="reimbursements">
             <%= render @reimbursements %>
             </ol>
             <%= will_paginate @reimbursements %>
             <% else %>
-            <h1> Reimbursements </h1>
-            <%= link_to "+Add new reimbursement", new_user_reimbursement_path %>
+            
+            
             <% end %>
 
     </div>

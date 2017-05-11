@@ -14,7 +14,7 @@
         |
         <%= link_to "Edit", edit_user_reimbursement_path(id: reimbursement.id, reimbursement: reimbursement), data: { confirm: "Edit reimbursement?" } %>
         | 
-        <%= link_to "Delete", user_reimbursements_path, method: :delete,
+        <%= link_to "Delete", user_reimbursement_path(id: reimbursement.id, reimbursement: reimbursement), method: :delete,
                                       data: { confirm: "Delete reimbursement?" } %>
        <% end %>
 
