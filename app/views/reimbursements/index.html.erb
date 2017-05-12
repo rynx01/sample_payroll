@@ -16,7 +16,7 @@
 
             <h1> Reimbursements </h1>
             <h3><%= link_to "+Add new reimbursement?", new_user_reimbursement_path %></h3>
-            <% if @user.reimbursements.any? %>
+            <% if @user.reimbursements.any? || @user.admin? %>
             
             <ol class="reimbursements">
             <%= render @reimbursements %>
