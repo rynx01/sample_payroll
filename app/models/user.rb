@@ -4,4 +4,5 @@ class User < ApplicationRecord
   has_secure_password
   validates :password, presence: true, length: { minimum: 5 }, allow_nil: true
   has_many :reimbursements, dependent: :destroy
+  has_many :allowances, dependent: :destroy
 end
