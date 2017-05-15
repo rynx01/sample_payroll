@@ -6,5 +6,5 @@ class User < ApplicationRecord
   has_many :reimbursements, dependent: :destroy
   has_many :allowances, dependent: :destroy
   has_many :dope_adjustments, dependent: :destroy
-  # has_many :nope_adjustments, dependent: :destroy
+  has_many :nope_adjustments, dependent: :destroy
 end
