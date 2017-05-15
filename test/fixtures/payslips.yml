@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sss: 9.99
+  pagibig: 9.99
+  philhealth: 9.99
+  user: one
+  reimbursement: one
+  dope_adjustment: one
+  nope_adjustment: one
+  allowance: one
+
+two:
+  sss: 9.99
+  pagibig: 9.99
+  philhealth: 9.99
+  user: two
+  reimbursement: two
+  dope_adjustment: two
+  nope_adjustment: two
+  allowance: two

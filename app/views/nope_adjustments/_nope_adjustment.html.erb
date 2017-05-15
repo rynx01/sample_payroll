@@ -7,7 +7,7 @@
 
     <% if current_user?(nope_adjustment.user) || logged_in? && current_user.admin? %>
      <br>
-      <%= link_to "Add", new_user_nope_adjustment_path(id: nope_adjustment.id,nope_adjustment: nope_adjustment), data: { confirm: "Add new +Adjustment?" } %>
+      <%= link_to "Add", new_user_nope_adjustment_path(id: nope_adjustment.id,nope_adjustment: nope_adjustment), data: { confirm: "Add new -Adjustment?" } %>
 
        <% if logged_in? && current_user.admin? %>
         |

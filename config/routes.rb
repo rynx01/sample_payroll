@@ -12,6 +12,8 @@ Rails.application.routes.draw do
    resources :allowances
    resources :dope_adjustments
    resources :nope_adjustments
+   # resources :payslips
+   # resources :payrolls
    
    
   end
