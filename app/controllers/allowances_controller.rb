@@ -26,8 +26,8 @@ class AllowancesController < ApplicationController
 
    def update
    	@user = User.find(params[:user_id])
-   	@reimbursement = Allowance.find(params[:id])
-    if @reimbursement.update_attributes(allowances_params)
+   	@allowance = Allowance.find(params[:id])
+    if @allowance.update_attributes(allowances_params)
       flash[:success] = "Allowance updated"
       redirect_to user_allowances_path
     else
@@ -37,8 +37,8 @@ class AllowancesController < ApplicationController
 
    def destroy
    	@user = User.find(params[:user_id])
-   	@reimbursement = @user.allowances.find(params[:id])
-   	@reimbursement.destroy
+   	@allowance = @user.allowances.find(params[:id])
+   	@allowance.destroy
     flash[:success] = "Allowance deleted"
     redirect_to user_allowances_path
    end

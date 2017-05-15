@@ -5,4 +5,6 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 5 }, allow_nil: true
   has_many :reimbursements, dependent: :destroy
   has_many :allowances, dependent: :destroy
+  has_many :dope_adjustments, dependent: :destroy
+  # has_many :nope_adjustments, dependent: :destroy
 end

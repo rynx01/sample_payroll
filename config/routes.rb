@@ -10,8 +10,9 @@ Rails.application.routes.draw do
   resources :users do
    resources :reimbursements
    resources :allowances
+   resources :dope_adjustments
    # resources :nope_adjustments
-   # resources :dope_adjustments
+   
    
   end
   # , only: [:edit, :delete, :create, :update, :destroy, :new, :index]
