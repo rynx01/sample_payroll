@@ -1,4 +1,6 @@
 <% provide(:title, "Edit user reimbursement") %>
+<% if logged_in? && current_user.admin? %>
+
 <h1>Edit your reimbursement</h1>
 
 <div class="row">
@@ -27,3 +29,5 @@
     
   </div>
 </div>
+
+<% end %>

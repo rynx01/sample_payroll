@@ -11,14 +11,31 @@ $gray-medium-light: #eaeaea;
   box-sizing:         border-box;
 }
 
+.search_bar{
+  width:30%;
+  text-align:center;
+}
 
+.add_reimbursement{ 
+  margin-top: 6em;
+  width: 25%;
+  height: 10%;
+  border: none;
+  color: black;
+  padding: 15px 32px;
+  font-size: 16px;
+  text-align:center;
+
+}
 .reimbursements, .allowances, .dope_adjustments, .nope_adjustments{
+
   list-style: none;
   padding: 0;
   li {
     padding: 10px 0;
     border-top: 1px solid #e8e8e8;
   }
+
 
   
   .user {

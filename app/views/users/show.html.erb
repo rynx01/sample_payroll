@@ -9,9 +9,37 @@
         
       </h1>
 
+
       
     </section>
+
   </aside>
+
+  
+
+  <% if logged_in? && current_user.admin? %>
+  
+ 	
+
+  <% end %>
+
+
+  
+
+  <div class="col-md-8">
+
+    
+            <% if @user.reimbursements.any? %>
+            <h3> Reimbursements </h3>
+            <ol class="reimbursements">
+            <%= render @reimbursements %>
+           </ol>
+            <% end %>
+
+    </div>
+  
+
+   <!-- <button type="button" onclick="alert('Hello world!')">Click Me!</button> -->
 
 
 </div>
