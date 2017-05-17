@@ -63,7 +63,7 @@ class UsersController < ApplicationController
 
     def user_params
       params.require(:user).permit(:username, :password, :password_confirmation, :admin, :name, :birthday, 
-        :contact_no, :account_no, :bank, :base_salary, :no_of_dependents)
+        :contact_no, :account_no, :bank, :base_salary, :no_of_dependents, :status)
     end
 
     def verify_is_admin
