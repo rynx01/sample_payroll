@@ -8,14 +8,15 @@ Rails.application.routes.draw do
 
   # resources :project
   
-  # resources :reimbursements
+  
   resources :users do
    resources :reimbursements
    resources :allowances
    resources :dope_adjustments
    resources :nope_adjustments
-   # resources :payslips
-   # resources :payrolls
+   resources :payrolls
+   resources :payslips
+    # resources :payrolls
   end
 
   # , only: [:edit, :delete, :create, :update, :destroy, :new, :index]
