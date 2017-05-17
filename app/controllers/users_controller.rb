@@ -16,6 +16,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @reimbursements = @user.reimbursements.all
+    
+
     # redirect_to url_for(:controller => :reimbursements, :action => :show
       # :reimbursements => :category, :reimbursements => :description, :reimbursements => :amount)
     # @reimbursements = Reimbursement.new
@@ -30,7 +32,7 @@ class UsersController < ApplicationController
 
   def new
   	@user = User.new
-
+    
   end
 
   def create
@@ -52,7 +54,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
       flash[:success] = "Profile updated"
-      redirect_to user_reimbursements_path
     else
       render 'edit'
     end

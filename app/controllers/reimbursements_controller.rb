@@ -3,8 +3,8 @@ class ReimbursementsController < ApplicationController
 
 
 	def index
-		  # render html: "hello, world!"
-	  @user = User.find(params[:user_id])
+		  
+    @user = User.find(params[:user_id])
 	 	if logged_in? && current_user.admin?
 	  		@reimbursements = Reimbursement.paginate(page: params[:page])
 		else
@@ -56,8 +56,8 @@ class ReimbursementsController < ApplicationController
    end
 
    def new
-   	@user = User.find(params[:user_id])
-   	# @reimbursements = @user.reimbursements 
+    @user = User.find(params[:user_id])
+   	@reimbursements = @user.reimbursements 
    end
    
    def correct_user

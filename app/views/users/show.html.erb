@@ -19,13 +19,14 @@
 
   <% if logged_in? && current_user.admin? %>
   
- 	<%= form_tag(@user_reimbursement_path, :method => "get", class: "add_reimbursement") do %>
+ 	<%= form_tag(new_user_reimbursement_path(user_id: @user.id), :method => "get", class: "add_reimbursement") do %>
  	  
       <%= submit_tag "Add new Reimbursement"%>
 
+
       <%= select(:reimbursement, :category, 
       [['Reimbursements', "Reimbursements"], ['Allowances', "Allowances"], ['(+)Adjustments', "(+)Adjustments"], ['(-)Adjustments', "(-)Adjustments"]]) %>
-      
+
     <% end %>
 
   <% end %>

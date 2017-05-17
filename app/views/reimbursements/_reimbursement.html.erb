@@ -5,8 +5,20 @@
   <span class="description"><h4>Description:</h4><%= reimbursement.description %></span>
   <span class="amount"><h4>Amount:</h4>₱<%= reimbursement.amount %></span>
 
-  
+  <% if current_user?(reimbursement.user) || logged_in? && current_user.admin? %>
+     <br>
+      <%= link_to "Add", new_user_reimbursement_path(id: reimbursement.id, user_id: @user.id), data: { confirm: "Add new reimbursement?" } %>
 
+       <% if logged_in? && current_user.admin? %>
+        |
+        <%= link_to "Edit", edit_user_reimbursement_path(id: reimbursement.id, user_id: @user.id), data: { confirm: "Edit reimbursement?" } %>
+        | 
+        <%= link_to "Delete", user_reimbursement_path(id: reimbursement.id, user_id: @user.id), method: :delete,
+                                      data: { confirm: "Delete reimbursement?" } %>
+       <% end %>
+
+    <% end %>
+  
   <span class="timestamp">
     Posted  <%= time_ago_in_words(reimbursement.created_at) %> ago.
 

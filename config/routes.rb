@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   delete '/logout',  		to: 'sessions#destroy'
 
   # resources :project
+  
+  # resources :reimbursements
   resources :users do
    resources :reimbursements
    resources :allowances
@@ -14,9 +16,8 @@ Rails.application.routes.draw do
    resources :nope_adjustments
    # resources :payslips
    # resources :payrolls
-   
-   
   end
+
   # , only: [:edit, :delete, :create, :update, :destroy, :new, :index]
 
   # resources :reimbursements
