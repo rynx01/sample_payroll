@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170515043543) do
+ActiveRecord::Schema.define(version: 20170517061428) do
 
   create_table "allowances", force: :cascade do |t|
     t.string   "description"
@@ -40,6 +40,15 @@ ActiveRecord::Schema.define(version: 20170515043543) do
     t.datetime "updated_at",  null: false
     t.index ["user_id", "created_at"], name: "index_nope_adjustments_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_nope_adjustments_on_user_id"
+  end
+
+  create_table "payrolls", force: :cascade do |t|
+    t.string   "period"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id", "created_at"], name: "index_payrolls_on_user_id_and_created_at"
+    t.index ["user_id"], name: "index_payrolls_on_user_id"
   end
 
   create_table "reimbursements", force: :cascade do |t|
