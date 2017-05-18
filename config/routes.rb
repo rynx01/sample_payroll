@@ -16,7 +16,7 @@ Rails.application.routes.draw do
    resources :nope_adjustments
    resources :payrolls
    resources :payslips
-    # resources :payrolls
+    
   end
 
   # , only: [:edit, :delete, :create, :update, :destroy, :new, :index]

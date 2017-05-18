@@ -17,3 +17,11 @@
 //= require moment
 //= require bootstrap-datetimepicker
 //= require_tree .
+
+// $(document).ready(function(){
+// 	$("#datepicker").datepicker({
+// 		changeDay: true,
+// 		changeMonth: true,
+// 		changeYear: true
+// 	});
+// });
