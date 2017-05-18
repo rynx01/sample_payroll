@@ -27,5 +27,8 @@ User.create!(username:  "admin",
   password = "password"
   User.create!(username:  username,
                password:              password,
-               password_confirmation: password)
+               password_confirmation: password,
+               status:              "Single",
+               base_salary:              "20000",
+               )
 end

@@ -42,10 +42,12 @@ class DopeAdjustmentsController < ApplicationController
    end
 
    def create
+    
   	@user = User.find(params[:user_id])
-  	@dope_adjustments = @user.dope_adjustments.new(dope_adjustments_params)
-    if @dope_adjustments.save
-      flash[:success] = "+Adjustment successfully created."
+    @dope_adjustments = @user.dope_adjustments.new(dope_adjustments_params)
+    
+    if @dope_adjustments.save!
+      flash[:success] = "Adjustment successfully created."
       redirect_to user_dope_adjustments_path
       # Handle a successful save.
     else

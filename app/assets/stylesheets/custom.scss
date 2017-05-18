@@ -12,10 +12,26 @@ $gray-medium-light: #eaeaea;
   box-sizing:         border-box;
 }
 
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+#period{
+  width: 35%;
+
+}
+
+#periodB{
+  width: 35%;
+  
+}
+
 .create{
   color: blue;
-  position: fixed;
-  right: 650px;
+  position: relative;
+  left: 200px;
   width: 150px;
   border: 3px solid #fffff;
   padding: 10px;
