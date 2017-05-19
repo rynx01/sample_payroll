@@ -3,6 +3,8 @@ class Payslip < ApplicationRecord
   belongs_to :payroll
 
   validates :employee, presence: true
+  
+  # has_many :reimbursements, inverse_of: :payslip
 
   before_save :set_base_salary, on: :create
 

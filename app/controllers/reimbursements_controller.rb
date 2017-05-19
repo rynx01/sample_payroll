@@ -46,7 +46,7 @@ class ReimbursementsController < ApplicationController
    def create
   	@user = User.find(params[:user_id])
   	@reimbursements = @user.reimbursements.new(reimbursements_params)
-    if @reimbursements.save
+    if @reimbursements.save!
       flash[:success] = "Reimbursement successfully created."
       redirect_to user_reimbursements_path
       # Handle a successful save.
