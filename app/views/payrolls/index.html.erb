@@ -1,26 +1,12 @@
 <h1> Payrolls </h1>
-<div>
-<h4>Create payroll cut-off</h4>
-<br>
 
-<div>
-
-<%= form_tag(user_payrolls_path, :method => "get", id: "payroll-form") do %>
-<ul>From: <input id="period" name="period" type="date" placeholder="Format: MM-DD-YYYY" /></ul>
-<ul>To: &nbsp; &nbsp; <input id="period" name="period" type="date" placeholder="Format: MM-DD-YYYY" /></ul>
-
-<button type="submit" class='create'> Create </button>
-<% end %>
-
+<div class="col-md-6 col-md-offset-3">
+	<%= link_to "New Payroll", new_payroll_path, class: "btn btn-primary" %>
 </div>
 
-<div>
+<div class= 'table_payroll'>
 	<%= render @payrolls %>
 </div>
-
-</div>
-
-
 
 <!-- params : {user_id, {period: {periodA, periodB}}}
 

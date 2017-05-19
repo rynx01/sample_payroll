@@ -25,10 +25,13 @@ User.create!(username:  "admin",
   name  = Faker::Name.name
   username = "example-#{n+1}@railstutorial.org"
   password = "password"
-  User.create!(username:  username,
+  User.create!(name: name,
+               username:  username,
                password:              password,
                password_confirmation: password,
                status:              "Single",
-               base_salary:              "20000",
+               base_salary:         Random::rand(30000) + 12000,
+               bank: ["BDO", "BPI", "Metrobank", "Unionbank", "PSBank"].sample,
+               account_no: Faker::Number.number(10)
                )
 end

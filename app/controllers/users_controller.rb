@@ -84,12 +84,6 @@ class UsersController < ApplicationController
       redirect_to(root_url) unless current_user?(@user)
     end
 
-    # def action_that_calls_one_from_another_controller
-    #   controller_you_want = ControllerYouWant.new
-    #   controller_you_want.request = request
-    #   controller_you_want.response = response
-    #   controller_you_want.action_you_want
-    # end
 
     private
     def reimbursements_params

@@ -1,1 +1,54 @@
-<h1> Payroll#show </h1>
+<h1>Payroll</h1>
+
+<table style="width:100%">
+  <caption>Period: <%= @payroll.start_period %> to <%= @payroll.end_period %></caption>
+  <thead>
+    <tr>
+      <th>Employees</th>
+      <th>Account Number</th> 
+      <th>Bank</th>
+      <th>Base Salary</th>
+      <th>Deductions</th>
+      <th>Allowances, Reimbursements, Adjustments</th>
+      <th>Final</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @payslips.each do |payslip| %>
+      <tr>
+        <td><%= link_to "View Payslip", user_payslip_path(payslip.employee.id, payslip.id) %></td>
+        <td><%= payslip.employee.name %></td>
+        <td><%= payslip.employee.account_no %></td>
+        <td><%= payslip.employee.bank %></td>
+        <td><%= number_to_currency payslip.base_salary, unit: "PHP " %></td>
+      </tr>
+    <% end %>
+    <tr>
+      <td><%= "Ryan Jay Dayrit" %></td>
+      <td>009999888877777</td>
+      <td><%= "Bdo" %></td>
+      <td>P20,000</td>
+      <td>P20,000</td>
+      <td>P20,000</td>
+      <td>P20,000</td>
+    </tr>
+    <tr>
+      <td>Rystraum Gamonez</td>
+      <td>009999888877775</td>
+      <td>BPI</td>
+      <td>P20,000</td>
+      <td>P20,000</td>
+      <td>P20,000</td>
+      <td>P20,000</td>
+    </tr>
+    <tr>
+      <td>Ryan Jay Dayrit</td>
+      <td>009999888877774</td>
+      <td>BPI</td>
+      <td>P20,000</td>
+      <td>P20,000</td>
+      <td>P20,000</td>
+      <td>P20,000</td>
+    </tr>
+  </tbody>
+</table>

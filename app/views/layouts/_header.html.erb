@@ -23,7 +23,7 @@
           </li>
 
           
-          <li><%= link_to "Payrolls", user_payrolls_path(current_user) %></li>
+          <li><%= link_to "Payrolls", payrolls_path if current_user.admin? %></li>
 
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">

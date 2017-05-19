@@ -8,14 +8,12 @@ class User < ApplicationRecord
   has_many :allowances, dependent: :destroy
   has_many :dope_adjustments, dependent: :destroy
   has_many :nope_adjustments, dependent: :destroy
-  has_many :payrolls
-  has_many :payslips
 
-  
+  has_many :payslips, inverse_of: :employee, foreign_key: :employee_id
 
-def self.search(search)
-  where("name LIKE ?", "%#{search}%") 
-end
+  def self.search(search)
+    where("name LIKE ?", "%#{search}%") 
+  end
 
 # def self.search(search)
 #   if search
