@@ -8,8 +8,12 @@ class Payslip < ApplicationRecord
 
   before_save :set_base_salary, on: :create
 
+
   private
   def set_base_salary
     self.base_salary = employee.base_salary
   end
+
+  
+
 end

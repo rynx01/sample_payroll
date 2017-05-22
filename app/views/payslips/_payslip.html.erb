@@ -1,1 +1,20 @@
-<h1> Payslip render </h1>
+<h3>  
+  
+  <%= @payslips.id %> 
+  <%= @payslips.employee.name %>
+  <%= @payslips.employee.status %>
+  <%= @payslips.employee.no_of_dependents %>
+  <%= @payslips.employee.account_no %>
+  <%= @payslips.employee.bank %>
+  <%= @payslips.employee.base_salary %>
+  <%= @payslips.sss %>
+  <%= @payslips.pagibig %>
+  <%= @payslips.philhealth %>
+  <%= @payslips.payroll.start_period %>
+  <%= @payslips.payroll.end_period %>
+  <%= @base_salary %>
+  <% @payslips.employee.reimbursements.each do |reimbursement| %>
+    <%= reimbursement.category %> <br/> <% end %>
+  Paid? <%= @payslips.paid %>
+
+</h3>

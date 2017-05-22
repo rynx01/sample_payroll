@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170519090346) do
+ActiveRecord::Schema.define(version: 20170522063411) do
 
   create_table "allowances", force: :cascade do |t|
     t.string   "description"
@@ -57,8 +57,9 @@ ActiveRecord::Schema.define(version: 20170519090346) do
     t.decimal  "sss",         precision: 6,  scale: 2
     t.decimal  "pagibig",     precision: 6,  scale: 2
     t.decimal  "philhealth",  precision: 6,  scale: 2
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
+    t.datetime "created_at",                                           null: false
+    t.datetime "updated_at",                                           null: false
+    t.boolean  "paid",                                 default: false
     t.index ["employee_id"], name: "index_payslips_on_employee_id"
     t.index ["payroll_id"], name: "index_payslips_on_payroll_id"
   end
@@ -67,7 +68,6 @@ ActiveRecord::Schema.define(version: 20170519090346) do
     t.string   "category"
     t.string   "description"
     t.decimal  "amount",      precision: 9, scale: 2
-    t.decimal  "price",       precision: 9, scale: 2
     t.integer  "user_id"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false

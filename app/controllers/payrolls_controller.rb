@@ -26,24 +26,6 @@ class PayrollsController < ApplicationController
     @payslips = @payroll.payslips.includes(:employee)
   end
  
-  # def new
-  #   @user = User.all
-  #   @payrolls = Payroll.new
-  # end
-
-  # def create
-  #   @payrolls = Payroll.new(payrolls_params)
-  #   # @users = User.all
-  #   # @payrolls = @users.payrolls.new(payrolls_params)
-  #   if @payrolls.save
-  #     flash[:success] = "Payroll successfully created."
-  #     redirect_to user_payrolls_path
-  #     # Handle a successful save.
-  #   else
-  #     render 'new'
-  #   end
-  # end
-
   def destroy
   end
 

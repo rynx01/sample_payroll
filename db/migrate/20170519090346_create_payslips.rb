@@ -7,6 +7,7 @@ class CreatePayslips < ActiveRecord::Migration[5.0]
       t.decimal :sss, precision: 6, scale: 2
       t.decimal :pagibig, precision: 6, scale: 2
       t.decimal :philhealth, precision: 6, scale: 2
+      
 
       t.timestamps
     end
