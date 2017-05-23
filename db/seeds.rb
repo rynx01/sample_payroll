@@ -14,7 +14,7 @@ User.create!(username:  "admin",
              name:  "ADMIN",
              birthday:  "05061988",
              contact_no:  "0",
-             account_no:  "0",
+             account_no:  "12343435346363433",
              bank:  "bdo",
              base_salary:  "18000",
              no_of_dependents: "0",
@@ -33,5 +33,6 @@ User.create!(username:  "admin",
                base_salary:         Random::rand(30000) + 12000,
                bank: ["BDO", "BPI", "Metrobank", "Unionbank", "PSBank"].sample,
                account_no: Faker::Number.number(10)
+               no_of_dependents: "0"
                )
 end

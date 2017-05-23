@@ -17,6 +17,8 @@ class PayslipsController < ApplicationController
     if @monthly_salary >= 16000
       @monthly_salary = 16000
     end
+    @payslips.sss = @monthly_salary*0.0363
+    @employer     = @monthly_salary*0.0737
 
 
   end
