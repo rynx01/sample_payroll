@@ -1,23 +1,104 @@
+<h1>Payslips(<%= @payslips.id %>)</h1>
 <h3>  
   
-  <%= @payslips.id %> 
-  <%= @payslips.employee.name %>
-  <%= @payslips.employee.status %>
-  <%= @payslips.employee.no_of_dependents %>
-  <%= @payslips.employee.account_no %>
-  <%= @payslips.employee.bank %>
-  <%= number_to_currency payslip.base_salary, unit: "PHP " %>
-  <%= @payslips.sss %>
-  <%= @payslips.pagibig %>
-  <%= @payslips.philhealth %>
-  <%= @payslips.payroll.start_period %>
-  <%= @payslips.payroll.end_period %>
-  <% @payslips.employee.reimbursements.each do |reimbursement| %>
-    <%= reimbursement.category %> <br/><%= reimbursement.amount %> <br /> <% end %>
-  Paid? <%= @payslips.paid %>
-  <%= number_to_currency payslip.sss, unit: "PHP " %>
-  <%= number_to_currency @monthly_salary, unit: "PHP " %>
-  <%= number_to_currency @employer, unit: "PHP " %>
+  <div>
+     
+
+    <div class="Employee_data"> Employee name </div>
+      <div class="Employee_name">
+      <%= @payslips.employee.name %><br/>
+      <% if @payslips.employee.no_of_dependents = 0 %>
+      <%= @payslips.employee.status %>, No Dependents 
+      <% else %>
+      <%= @payslips.employee.no_of_dependents %>, dependent(s)
+      <% end %>
+      </div>
+      
+      <table class="table_payslip">
+       <thead>
+         <tr>
+           <th>Payslip period</th>
+           <th></th>
+           <th><%= @payslips.payroll.start_period %> to <%= @payslips.payroll.end_period %></th>
+         </tr>
+         <tr>
+           <th>Base Salary</th>
+           <th></th>
+           <th><%= number_to_currency payslip.base_salary, unit: "PHP " %></th>
+         </tr>
+         <tr>
+           <th>SSS</th>
+           <th></th>
+           <th><%= number_to_currency payslip.sss, unit: "PHP " %></th>
+         </tr>
+         <tr>
+           <th>PAGIBIG</th>
+           <th></th>
+           <th><%= number_to_currency payslip.base_salary, unit: "PHP " %></th>
+         </tr>
+         <tr>
+           <th>Philhealth</th>
+           <th></th>
+           <th><%= number_to_currency payslip.philhealth, unit: "PHP " %></th>
+         </tr>
+         <tr>
+           <th>Allowances</th>
+           <th></th>
+           <th><%= number_to_currency payslip.base_salary, unit: "PHP " %></th>
+         </tr>
+         <tr>
+           <th>Reimbursements</th>
+           <% @payslips.employee.reimbursements.each do |reimbursement| %> 
+            <% if @payslips.employee.reimbursements.count > 1 %>
+             <tr>
+             <th></th>
+             <th>Category: <%= reimbursement.category %> <br/></th>
+             <th><%= number_to_currency reimbursement.amount, unit: "PHP " %> <br /></th>
+             </tr>
+            <% else %>
+            <th></th>
+            <th>Category: <%= reimbursement.category %> <br/></th>
+            <th><%= number_to_currency reimbursement.amount, unit: "PHP " %> <br /></th> <% end %>
+            <% end %>
+         </tr>
+         <tr>
+           <th>Witholding Tax</th>
+           <th></th>
+           <th><%= number_to_currency payslip.base_salary, unit: "PHP " %></th>
+         </tr>
+         <tr>
+           <th>Adjustments (Less)</th>
+           <th><%= number_to_currency payslip.base_salary, unit: "PHP " %></th>
+           <th><%= number_to_currency payslip.base_salary, unit: "PHP " %></th>
+         </tr>
+         <tr>
+           <th>Adjustments (Plus)</th>
+           <th><%= number_to_currency payslip.base_salary, unit: "PHP " %></th>
+           <th><%= number_to_currency payslip.base_salary, unit: "PHP " %></th>
+         </tr>
+       </thead>
+        
+
+
+      </table>
+      <%= @payslips.employee.account_no %>
+      <%= @payslips.employee.bank %>
+      <%= number_to_currency payslip.base_salary, unit: "PHP " %>
+      <%= @payslips.sss %>
+      <%= @payslips.pagibig %>
+      <%= @payslips.philhealth %>
+      <%= @payslips.payroll.start_period %>
+      <%= @payslips.payroll.end_period %>
+      
+      Paid? <%= @payslips.paid %>
+      <%= number_to_currency payslip.sss, unit: "PHP " %>
+      <%= number_to_currency @monthly_salary_sss, unit: "PHP " %>
+      <%= number_to_currency @employer_sss, unit: "PHP " %>
+      <%= number_to_currency @employer_philhealth, unit: "PHP " %>
+
+    </div>
+ 
+  </div>
 
 
 

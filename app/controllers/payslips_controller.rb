@@ -11,14 +11,23 @@ class PayslipsController < ApplicationController
 
     @reimbursements = Reimbursement.all
     @payslips = Payslip.find(params[:id])
-    # @cutoff_salary = @payslips.employee.base_salary/2
-    @salary = @payslips.employee.base_salary
-    @monthly_salary = sssBracket(@salary)
-    if @monthly_salary >= 16000
-      @monthly_salary = 16000
+    #cutoff
+    @salary = @payslips.employee.base_salary/2
+    #sss computation
+    @monthly_salary_sss = sssBracket(@salary)
+    if @monthly_salary_sss >= 16000
+      @monthly_salary_sss = 16000
     end
-    @payslips.sss = @monthly_salary*0.0363
-    @employer     = @monthly_salary*0.0737
+    @payslips.sss = @monthly_salary_sss*0.0363
+    @employer_sss     = @monthly_salary_sss*0.0737
+    #philhealth_computation
+    @monthly_salary_philhealth = philBracket(@salary)
+    @payslips.philhealth = @monthly_salary_philhealth/40
+    @employer_philhealth = @payslips.philhealth/2
+    #pagibig_computation
+    @monthly_salary_pagibig = pagibigBracket(@salary)
+
+
 
 
   end
@@ -66,6 +75,26 @@ class PayslipsController < ApplicationController
     end
         
   end
+
+  def philBracket (salary)
+      salary = salary/1000
+      if salary <= 7
+        salary = 7000
+      elsif salary >= 35
+        salary = 35000
+      else
+        return salary * 1000
+      end 
+  end
+
+  def pagibigBracket (salary)
+      if salary <= 1500
+        salary = 1500*0.01
+      end
+  end
+
+
+
 
 
 

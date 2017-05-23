@@ -12,6 +12,28 @@ $gray-medium-light: #eaeaea;
   box-sizing:         border-box;
 }
 
+.Employee_data{
+  font-size: 1em;
+  margin-bottom: 1.5%;
+
+}
+
+.Employee_name{
+  font-size: 1em;
+  color:gray; 
+}
+
+.table_payslip{
+  margin-top:5%;
+  margin-right:5%;
+  margin-left:5%;
+  margin-bottom:5%;
+  width: 90%;
+  border: 1px solid black;
+  border-collapse: collapse;
+  text-align: center;
+}
+
 .table_payroll {
   margin-top: 13em;
 }
