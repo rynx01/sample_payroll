@@ -86,9 +86,9 @@ ActiveRecord::Schema.define(version: 20170522063411) do
     t.string   "contact_no"
     t.string   "account_no"
     t.string   "bank"
-    t.integer  "base_salary"
-    t.integer  "no_of_dependents"
-    t.string   "status"
+    t.integer  "base_salary"      default: 15000
+    t.integer  "no_of_dependents" default: 0
+    t.string   "status"           default: "Single"
   end
 
 end

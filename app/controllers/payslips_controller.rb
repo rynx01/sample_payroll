@@ -8,23 +8,17 @@ class PayslipsController < ApplicationController
   end
 
   def show
-    # @users = User.find(params[:user_id])
-    # @payrolls = Payroll.find(params[:id])
+
     @reimbursements = Reimbursement.all
     @payslips = Payslip.find(params[:id])
-    @base_salary = @payslips.employee.base_salary/2
-    # if @base_salary <= 1000
-    #   @total_salary = 1000
-    #   @ee = 
-    #   @er = 
-    # end
+    # @cutoff_salary = @payslips.employee.base_salary/2
+    @salary = @payslips.employee.base_salary
+    @monthly_salary = sssBracket(@salary)
+    if @monthly_salary >= 16000
+      @monthly_salary = 16000
+    end
 
-    # @sss = @payslips.sss
-    # @sss = @payslips.base_salary 
-    # @payslips = @users.payslips.find(params[:id])
-    # @users = User.find(params[:user_id])
-    # @payslips = Payslip.find(params[:id])
-    # @payslip = @users.payslips.includes(:employee)
+
   end
 
   def new
@@ -53,6 +47,25 @@ class PayslipsController < ApplicationController
     params.require(:payslip).permit(:base_salary, :sss, :pagibig, 
                                                 :philhealth, :paid)
   end
+
+  def sssBracket (salary)
+     thousands = salary/1000
+     hundreds  = salary%1000
+     percent   = hundreds/1000.0
+
+     if   percent < 0.25
+      return thousands * 1000
+    elsif percent < 0.75
+      return (thousands * 1000) + 500
+    elsif thousands >= 15
+      return 16000
+    else 
+      return (thousands + 1) * 1000
+    end
+        
+  end
+
+
 
 
 end

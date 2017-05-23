@@ -6,15 +6,17 @@
   <%= @payslips.employee.no_of_dependents %>
   <%= @payslips.employee.account_no %>
   <%= @payslips.employee.bank %>
-  <%= @payslips.employee.base_salary %>
+  <%= number_to_currency payslip.base_salary, unit: "PHP " %>
   <%= @payslips.sss %>
   <%= @payslips.pagibig %>
   <%= @payslips.philhealth %>
   <%= @payslips.payroll.start_period %>
   <%= @payslips.payroll.end_period %>
-  <%= @base_salary %>
   <% @payslips.employee.reimbursements.each do |reimbursement| %>
-    <%= reimbursement.category %> <br/> <% end %>
+    <%= reimbursement.category %> <br/><%= reimbursement.amount %> <br /> <% end %>
   Paid? <%= @payslips.paid %>
+  <%= number_to_currency payslip.sss, unit: "PHP " %>
+  <%= number_to_currency @monthly_salary, unit: "PHP " %>
+
 
 </h3>
