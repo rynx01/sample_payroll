@@ -22,9 +22,9 @@
         <td><%= payslip.employee.account_no %></td>
         <td><%= payslip.employee.bank %></td>
         <td><%= number_to_currency payslip.base_salary, unit: "PHP " %></td>
+        <td><%= payslip.deduction %></td>
         <td><%= number_to_currency payslip.sss, unit: "PHP " %></td>
         <td><%= number_to_currency payslip.pagibig, unit: "PHP " %></td>
-        <td><%= number_to_currency payslip.philhealth, unit: "PHP " %></td>
       </tr>
     <% end %>
     

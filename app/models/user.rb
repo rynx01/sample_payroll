@@ -15,6 +15,14 @@ class User < ApplicationRecord
     where("name LIKE ?", "%#{search}%") 
   end
 
+  # def total_reimbursement
+  #   total_reimbursement = 0
+  #   if self.reimbursements
+  #     self.reimbursements.each do |reimbursement|
+  #     end
+
+  # end
+
 # def self.search(search)
 #   if search
 #     find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
