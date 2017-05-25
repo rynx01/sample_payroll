@@ -68,8 +68,11 @@
              <th> &nbsp; </th>
              </tr>
             <% else %>
-            <th>Description: <%= allowance.description %> <br/></th>
-            <th><%= number_to_currency allowance.amount, unit: "PHP " %> <br /></th> <% end %>
+            <tr>
+             <th>Description: </th>
+             <th><%= allowance.description %> <br/></th>
+             <th><%= number_to_currency allowance.amount, unit: "PHP " %> <br /></th>
+             <th> &nbsp; </th></tr> <% end %>
             <% end %>
          </tr>
          <th></th>
@@ -96,8 +99,11 @@
              </tr>
             <% else %>
             <th></th>
-            <th>Category: <%= reimbursement.category %> <br/></th>
-            <th><%= number_to_currency reimbursement.amount, unit: "PHP " %> <br /></th> <% end %>
+            <tr>
+             <th>Category: </th>
+             <th><%= reimbursement.category %> <br/></th>
+             <th><%= number_to_currency reimbursement.amount, unit: "PHP " %> <br /></th>
+             <th> &nbsp; </th></tr> <% end %>
             <% end %>
             <th></th>
             <th> <%= link_to "Add new reimbursement?", new_user_reimbursement_path %> </th>
@@ -144,8 +150,11 @@
              </th>
              </tr>
             <% else %>
-            <th>Description: <%= nope_adjustment.description %> <br/></th>
-            <th><%= number_to_currency nope_adjustment.amount, unit: "PHP " %> <br /></th> <% end %>
+            <tr>
+             <th>Description: </th>
+             <th><%= nope_adjustment.description %> <br/></th>
+             <th><%= number_to_currency nope_adjustment.amount, unit: "PHP " %> <br /></th>
+             <th> &nbsp; </th></tr> <% end %>
             <% end %>
          </tr>
          <th></th>
@@ -174,34 +183,27 @@
              </tr>
             <% else %>
             <th>Description: <%= dope_adjustment.description %> <br/></th>
-            <th><%= number_to_currency dope_adjustment.amount, unit: "PHP " %> <br /></th> <% end %>
+            <th><%= number_to_currency dope_adjustment.amount, unit: "PHP " %> <br /></th><th> &nbsp; </th></tr> <% end %>
             <% end %>
          </tr>
          <th></th>
             <th> <%= link_to "Add new adjustment (plus)?", new_user_dope_adjustment_path %></th>
             <th> &nbsp; </th>
 
-
-         <tr>
+         <tr class="Final">
+           <th >Final</th>
            <th> &nbsp; </th>
            <th> &nbsp; </th>
-           <th> &nbsp; </th>
-           <th> &nbsp; </th>
+           <th><%= number_to_currency @final_pay, unit: "PHP " %></th>
          </tr>
-
-         <tr>
-           <th>Final</th>
-           <th></th>
-           <th>1000</th>
-         </tr>
-
+         
        </thead>
         
 
 
       </table>
-   
 
+      
     </div>
  
   </div>
