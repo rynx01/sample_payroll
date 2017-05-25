@@ -13,18 +13,28 @@ $gray-medium-light: #eaeaea;
 }
 
 .Employee_data{
-  font-size: 1em;
-  margin-bottom: 1.5%;
+  font-size: 1.2em;
+  border: 1px solid black;
+  text-align: center;
 
 }
+
+
 
 .Employee_name{
-  font-size: 1em;
-  color:gray; 
+  font-size: 1.5em;
+  color:black; 
+  border: 1px solid black;
+  text-align: center;
+  margin-top:1.5%;
+
+
 }
 
+
+
 .table_payslip{
-  margin-top:5%;
+  margin-top:2%;
   margin-right:5%;
   margin-left:5%;
   margin-bottom:5%;
@@ -33,7 +43,9 @@ $gray-medium-light: #eaeaea;
   border-collapse: collapse;
   text-align: center;
 }
-
+.tr {
+ margin-bottom: 3em;
+}
 .table_payroll {
   margin-top: 13em;
 }

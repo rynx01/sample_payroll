@@ -26,6 +26,9 @@ class PayslipsController < ApplicationController
     @employer_philhealth = @payslips.philhealth/2
     #pagibig_computation
     @monthly_salary_pagibig = pagibigBracket(@salary)
+    @payslips.pagibig    = @monthly_salary_pagibig
+    @employer_philhealth = @monthly_salary_pagibig
+    @withholding_tax = 1500
 
 
 
@@ -89,7 +92,9 @@ class PayslipsController < ApplicationController
 
   def pagibigBracket (salary)
       if salary <= 1500
-        salary = 1500*0.01
+        salary = salary*0.01
+      else
+        salary = salary*0.02
       end
   end
 
