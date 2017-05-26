@@ -21,9 +21,27 @@
         <td><%= payslip.employee.name %></td>
         <td><%= payslip.employee.account_no %></td>
         <td><%= payslip.employee.bank %></td>
+
         <td><%= number_to_currency payslip.base_salary, unit: "PHP " %></td>
-        <td><%= payslip.deduction %></td>
-        <td><%= number_to_currency payslip.sss, unit: "PHP " %></td>
+
+
+        
+        <td>SSS: <%= number_to_currency payslip.monthly_salary_sss, unit: "PHP " %>, <br/>
+
+        Philhealth: <%= number_to_currency payslip.monthly_salary_philhealth, unit: "PHP " %>, <br/> 
+
+        Pagibig: <%= number_to_currency payslip.monthly_salary_pagibig, unit: "PHP " %>, <br/>
+
+        Withholding Tax: <%= number_to_currency payslip.monthly_withholding_tax, unit: "PHP " %>, <br/>
+
+
+        Less Adjustments: <%= number_to_currency payslip.monthly_less_adjustments, unit: "PHP " %>, <br/>
+        </td>
+
+
+
+
+        <td><%= number_to_currency payslip.monthly_salary_philhealth, unit: "PHP " %></td>
         <td><%= number_to_currency payslip.pagibig, unit: "PHP " %></td>
       </tr>
     <% end %>
