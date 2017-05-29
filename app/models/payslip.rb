@@ -211,13 +211,98 @@ class Payslip < ApplicationRecord
 
 
   def monthly_less_adjustments
+
+    # @less_adjustment = employee.nope_adjustments.all
+    # return @less_adjustment
+
+    # @less_adjustment = 0
+
+    employee.nope_adjustments.collect do |nope_adjustment|
+      nope_adjustment.amount
+    end
+
+     # @count = employee.nope_adjustments.count
+
+     #   if @count > 0
+     #    return @count = "More than zero"
+     #   else
+     #    return @count = "Zero"
+     #   end
+
+  end
+
+
+  def monthly_total_less_adjustments
+
     total_nope_adjustments = 0
 
-    employee.nope_adjustments.each do |nope_adjustment|
-      @total_nope_adjustments += nope_adjustment.amount
-   end
-   return total_nope_adjustments
+     employee.nope_adjustments.each do |nope_adjustment|
+     total_nope_adjustments = total_nope_adjustments + nope_adjustment.amount
+     end
+
+     return total_nope_adjustments
+
   end
+  
+  # def monthly_plus_adjustments
+
+  #    employee.dope_adjustments.each do |dope_adjustment|
+  #    @plus_adjustment = dope_adjustment.amount
+
+  #    end
+
+  #    @plus_adjustment
+
+  # end
+
+  
+  # def monthly_total_plus_adjustments
+
+  #   total_dope_adjustments = 0
+
+  #    employee.dope_adjustments.each do |dope_adjustment|
+  #    total_dope_adjustments = total_dope_adjustments + dope_adjustment.amount
+  #    end
+
+  #    return total_dope_adjustments
+
+  # end
+  
+  #  def monthly_allowance
+
+  #    employee.allowance.each do |allowance|
+  #    @allowance = allowance.amount
+
+  #    end
+
+  #    @allowance
+
+  # end
+
+  # def monthly_total_plus_adjustments
+
+  #   total_dope_adjustments = 0
+
+  #    employee.dope_adjustments.each do |dope_adjustment|
+  #    total_dope_adjustments = total_dope_adjustments + dope_adjustment.amount
+  #    end
+
+  #    return total_dope_adjustments
+
+  # end
+
+  # def monthly_total_reimbursements
+
+  #   total_dope_adjustments = 0
+
+  #    employee.dope_adjustments.each do |dope_adjustment|
+  #    total_dope_adjustments = total_dope_adjustments + dope_adjustment.amount
+  #    end
+
+  #    return total_dope_adjustments
+
+  # end
+
 
  
 
@@ -229,4 +314,6 @@ private
   def set_base_salary
     self.base_salary = employee.base_salary
   end  
+
+
 end

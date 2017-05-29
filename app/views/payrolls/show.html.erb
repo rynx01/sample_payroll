@@ -12,6 +12,7 @@
       <th>Deductions</th>
       <th>Allowances, Reimbursements, Adjustments</th>
       <th>Final</th>
+      <th>Status</th>
     </tr>
   </thead>
   <tbody>
@@ -24,25 +25,41 @@
 
         <td><%= number_to_currency payslip.base_salary, unit: "PHP " %></td>
 
-
-        
-        <td>SSS: <%= number_to_currency payslip.monthly_salary_sss, unit: "PHP " %>, <br/>
+        <td id="deductions">SSS:<%= number_to_currency payslip.monthly_salary_sss, unit: "PHP " %>,</div> <br/>
 
         Philhealth: <%= number_to_currency payslip.monthly_salary_philhealth, unit: "PHP " %>, <br/> 
 
         Pagibig: <%= number_to_currency payslip.monthly_salary_pagibig, unit: "PHP " %>, <br/>
 
         Withholding Tax: <%= number_to_currency payslip.monthly_withholding_tax, unit: "PHP " %>, <br/>
+        
+        Less Adjustments:
+        <% payslip.monthly_less_adjustments.each do |nope_adjustment| %>
+         <%= number_to_currency nope_adjustment, unit: "PHP " %>, 
+        <% end %>
+
+        <br/>Total Adjustments: <%= number_to_currency payslip.monthly_total_less_adjustments, unit: "PHP " %><br/>
+   
 
 
-        Less Adjustments: <%= number_to_currency payslip.monthly_less_adjustments, unit: "PHP " %>, <br/>
+
         </td>
 
 
-
-
         <td><%= number_to_currency payslip.monthly_salary_philhealth, unit: "PHP " %></td>
-        <td><%= number_to_currency payslip.pagibig, unit: "PHP " %></td>
+
+        <td> 500 </td>
+        
+
+        <td>
+        <% if payslip.paid = "false" %>
+          &nbsp;Unpaid&nbsp;
+        <% else %>
+          &nbsp;Paid&nbsp;
+        <% end %>
+        </td>
+
+
       </tr>
     <% end %>
     
