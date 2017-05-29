@@ -5,6 +5,8 @@ class Payslip < ApplicationRecord
   attr_accessor :monthly_salary_sss, :monthly_salary_philhealth
 
   validates :employee, presence: true
+
+  # validates_inclusion_of :paid, :in => [true, false]
   
   # has_many :reimbursements, inverse_of: :payslip
 

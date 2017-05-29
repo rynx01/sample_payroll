@@ -68,12 +68,7 @@ class PayslipsController < ApplicationController
     #final_pay computation
     @final_pay = (@payslips.employee.base_salary + @total_allowances + @total_reimbursements + @total_dope_adjustments) - (@payslips.sss + @payslips.pagibig + @payslips.philhealth + @withholding_tax + @total_dope_adjustments )
 
-   
-
-
-
-
-
+    
   end
 
   def new

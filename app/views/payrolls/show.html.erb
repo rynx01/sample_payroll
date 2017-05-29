@@ -83,12 +83,13 @@
 
         <td>
         <% if payslip.paid = "false" %>
-          &nbsp;Unpaid&nbsp;
+          <%= link_to "Unpaid", payslip.paid %>
         <% else %>
-          &nbsp;Paid&nbsp;
+          <%= link_to "Paid",  payslip.paid %>
         <% end %>
         </td>
 
+      
 
       </tr>
     <% end %>
