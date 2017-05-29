@@ -32,23 +32,53 @@
         Pagibig: <%= number_to_currency payslip.monthly_salary_pagibig, unit: "PHP " %>, <br/>
 
         Withholding Tax: <%= number_to_currency payslip.monthly_withholding_tax, unit: "PHP " %>, <br/>
-        
-        Less Adjustments:
+
+        <br/>Less Adjustments: <br/>
         <% payslip.monthly_less_adjustments.each do |nope_adjustment| %>
          <%= number_to_currency nope_adjustment, unit: "PHP " %>, 
         <% end %>
 
-        <br/>Total Adjustments: <%= number_to_currency payslip.monthly_total_less_adjustments, unit: "PHP " %><br/>
-   
+        <br/>Total Less Adjustments: <%= number_to_currency payslip.monthly_total_less_adjustments, unit: "PHP " %><br/>
 
+
+        <br/>Sum:&nbsp;<%= number_to_currency payslip.monthly_total_deductions, unit: "PHP " %>
 
 
         </td>
 
 
-        <td><%= number_to_currency payslip.monthly_salary_philhealth, unit: "PHP " %></td>
 
-        <td> 500 </td>
+        <td id="deductions">
+
+        <br/>Allowances: <br/>
+        <% payslip.monthly_allowances.each do |allowance| %>
+         <%= number_to_currency allowance, unit: "PHP " %>, 
+        <% end %>
+
+        <br/>Total Allowances: <%= number_to_currency payslip.monthly_total_allowances, unit: "PHP " %><br/>
+
+        <br/>Reimbursements: <br/>
+        <% payslip.monthly_reimbursements.each do |reimbursement| %>
+         <%= number_to_currency reimbursement, unit: "PHP " %>, 
+        <% end %>
+
+        <br/>Total Reimbursements: <%= number_to_currency payslip.monthly_total_reimbursements, unit: "PHP " %><br/>
+
+        <br/>Plus Adjustments: <br/>
+        <% payslip.monthly_plus_adjustments.each do |dope_adjustment| %>
+         <%= number_to_currency dope_adjustment, unit: "PHP " %>, 
+        <% end %>
+
+        <br/>Total Plus Adjustments: <%= number_to_currency payslip.monthly_total_plus_adjustments, unit: "PHP " %><br/>
+
+
+
+        <br/>Sum:&nbsp;<%= number_to_currency payslip.monthly_total_ARA, unit: "PHP " %>
+
+
+        </td>
+
+        <td> <%= number_to_currency payslip.monthly_final_pay, unit: "PHP " %> </td>
         
 
         <td>

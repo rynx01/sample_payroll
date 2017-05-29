@@ -209,25 +209,12 @@ class Payslip < ApplicationRecord
 
   end
 
-
+  #nope_adjustments collect
   def monthly_less_adjustments
-
-    # @less_adjustment = employee.nope_adjustments.all
-    # return @less_adjustment
-
-    # @less_adjustment = 0
 
     employee.nope_adjustments.collect do |nope_adjustment|
       nope_adjustment.amount
     end
-
-     # @count = employee.nope_adjustments.count
-
-     #   if @count > 0
-     #    return @count = "More than zero"
-     #   else
-     #    return @count = "Zero"
-     #   end
 
   end
 
@@ -243,69 +230,90 @@ class Payslip < ApplicationRecord
      return total_nope_adjustments
 
   end
+
+  #reimbursements collect
+  def monthly_reimbursements
+
+    employee.reimbursements.collect do |reimbursement|
+      reimbursement.amount
+    end
+
+  end
+
+  def monthly_total_reimbursements
+
+    total_reimbursements = 0
+
+     employee.reimbursements.each do |reimbursement|
+     total_reimbursements = total_reimbursements + reimbursement.amount
+     end
+
+     return total_reimbursements
+
+  end
+
+  #allowances collect
+  def monthly_allowances
+
+    employee.allowances.collect do |allowance|
+      allowance.amount
+    end
+
+  end
+
+  def monthly_total_allowances
+
+    total_allowances = 0
+
+     employee.allowances.each do |allowance|
+     total_allowances = total_allowances + allowance.amount
+     end
+
+     return total_allowances
+
+  end
+
+
+  #dope_adjustments collect
+  def monthly_plus_adjustments
+
+    employee.dope_adjustments.collect do |dope_adjustment|
+      dope_adjustment.amount
+    end
+    
+  end
+
+
+  def monthly_total_plus_adjustments
+
+    total_dope_adjustments = 0
+
+     employee.dope_adjustments.each do |dope_adjustment|
+     total_dope_adjustments = total_dope_adjustments + dope_adjustment.amount
+     end
+
+     return total_dope_adjustments
+
+  end
+
+  #total_allowance_reimbursement_adjustments computation
+  def monthly_total_ARA
+    total_ARA = monthly_total_plus_adjustments + monthly_total_reimbursements + monthly_total_allowances
+    return total_ARA
+  end
+
+  #total_deduction_computation
+  def monthly_total_deductions
+    total_deduction = monthly_salary_sss+monthly_salary_philhealth+monthly_salary_pagibig+monthly_withholding_tax+monthly_total_less_adjustments
+    return total_deduction
+  end
+
+  #total monthly pay
+  def monthly_final_pay
+    final_pay = employee.base_salary + monthly_total_ARA - monthly_total_deductions
+    return final_pay
+  end
   
-  # def monthly_plus_adjustments
-
-  #    employee.dope_adjustments.each do |dope_adjustment|
-  #    @plus_adjustment = dope_adjustment.amount
-
-  #    end
-
-  #    @plus_adjustment
-
-  # end
-
-  
-  # def monthly_total_plus_adjustments
-
-  #   total_dope_adjustments = 0
-
-  #    employee.dope_adjustments.each do |dope_adjustment|
-  #    total_dope_adjustments = total_dope_adjustments + dope_adjustment.amount
-  #    end
-
-  #    return total_dope_adjustments
-
-  # end
-  
-  #  def monthly_allowance
-
-  #    employee.allowance.each do |allowance|
-  #    @allowance = allowance.amount
-
-  #    end
-
-  #    @allowance
-
-  # end
-
-  # def monthly_total_plus_adjustments
-
-  #   total_dope_adjustments = 0
-
-  #    employee.dope_adjustments.each do |dope_adjustment|
-  #    total_dope_adjustments = total_dope_adjustments + dope_adjustment.amount
-  #    end
-
-  #    return total_dope_adjustments
-
-  # end
-
-  # def monthly_total_reimbursements
-
-  #   total_dope_adjustments = 0
-
-  #    employee.dope_adjustments.each do |dope_adjustment|
-  #    total_dope_adjustments = total_dope_adjustments + dope_adjustment.amount
-  #    end
-
-  #    return total_dope_adjustments
-
-  # end
-
-
- 
-
 
 private
 
