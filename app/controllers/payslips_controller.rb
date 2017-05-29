@@ -6,6 +6,17 @@ class PayslipsController < ApplicationController
     @payslips  = Payslip.paginate(page: params[:page])
   
   end
+  
+  def toggle_paid
+   @payslips = Payslip.find(params[:id])
+   @payslips.toggle(:paid)
+   redirect_to user_payslip_path
+   return @payslips.paid
+  end
+
+  # def toggle_paid_false
+  #   return false
+  # end
 
   def show
 
@@ -68,7 +79,7 @@ class PayslipsController < ApplicationController
     #final_pay computation
     @final_pay = (@payslips.employee.base_salary + @total_allowances + @total_reimbursements + @total_dope_adjustments) - (@payslips.sss + @payslips.pagibig + @payslips.philhealth + @withholding_tax + @total_dope_adjustments )
 
-    
+
   end
 
   def new
@@ -98,22 +109,7 @@ class PayslipsController < ApplicationController
                                                 :philhealth, :paid)
   end
 
-  # def sssBracket (salary)
-  #    thousands = salary/1000
-  #    hundreds  = salary%1000
-  #    percent   = hundreds/1000.0
-
-  #    if   percent < 0.25
-  #     return thousands * 1000
-  #   elsif percent < 0.75
-  #     return (thousands * 1000) + 500
-  #   elsif thousands >= 15
-  #     return 16000
-  #   else 
-  #     return (thousands + 1) * 1000
-  #   end
-        
-  # end
+  
 
   def philBracket (salary)
       salary = salary/1000

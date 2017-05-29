@@ -13,10 +13,14 @@ Rails.application.routes.draw do
     resources :allowances
     resources :dope_adjustments
     resources :nope_adjustments
-    resources :payslips
+    resources :payslips do
+      member do
+        post :toggle_paid
+      end
+    end
   end
 
-  resources :payrolls
+  resources :payrolls 
 
   # , only: [:edit, :delete, :create, :update, :destroy, :new, :index]
 

@@ -29,6 +29,11 @@ class PayrollsController < ApplicationController
   def destroy
   end
 
+
+  def toggle_paid
+  end
+
+
   private 
 
   def payroll_params

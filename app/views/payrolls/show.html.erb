@@ -83,9 +83,9 @@
 
         <td>
         <% if payslip.paid = "false" %>
-          <%= link_to "Unpaid", payslip.paid %>
+          <%= link_to "Unpaid", :method => :toggle_paid, :title => "Paid?" %>
         <% else %>
-          <%= link_to "Paid",  payslip.paid %>
+          <%= link_to "Paid", :method => :toggle_paid, :title => "Not yet paid?" %>
         <% end %>
         </td>
 

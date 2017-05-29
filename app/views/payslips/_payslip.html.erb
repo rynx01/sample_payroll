@@ -199,9 +199,17 @@
          <tr>
            <th >&nbsp;</th>
            <th> &nbsp; </th>
-           <th> Paid?</th>
-           <th><%= payslip.paid %></th>
+           <th> Paid? </th>
+           <th>
+           <% if payslip.paid = "false" %>
+           <%= link_to "#{payslip.paid}", toggle_paid_user_payslip_path, :method => :toggle_paid, data: { confirm: "Paid?" } %>
+           <% else %>
+           <%= link_to "#{payslip.paid}", toggle_paid_user_payslip_path, :method => :toggle_paid, data: { confirm: "Not yet Paid?" } %>
+           <% end %>
+           </th>
          </tr>
+
+
          
        </thead>
         
@@ -211,8 +219,6 @@
     
   </div>
 
-  <div>
-   <h2><%= @total_reimbursements %><br/><%= @total_allowances%><br/><%= @total_nope_adjustments %><br/><%= @total_dope_adjustments %></h2>
-  </div>
+
 
 </h3>

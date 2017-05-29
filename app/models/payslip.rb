@@ -2,7 +2,7 @@ class Payslip < ApplicationRecord
   belongs_to :employee, class_name: "User", foreign_key: :employee_id
   belongs_to :payroll
 
-  attr_accessor :monthly_salary_sss, :monthly_salary_philhealth
+  # attr_accessor :monthly_salary_sss, :monthly_salary_philhealth
 
   validates :employee, presence: true
 
@@ -316,11 +316,17 @@ class Payslip < ApplicationRecord
     return final_pay
   end
   
+  def monthly_status_false
+    return false
+  end
+
+  def monthly_status_true
+    return true
+  end
 
 private
 
   
-
   def set_base_salary
     self.base_salary = employee.base_salary
   end  
