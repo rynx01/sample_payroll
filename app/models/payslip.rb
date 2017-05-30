@@ -316,13 +316,7 @@ class Payslip < ApplicationRecord
     return final_pay
   end
   
-  def monthly_status_false
-    return false
-  end
 
-  def monthly_status_true
-    return true
-  end
 
 private
 

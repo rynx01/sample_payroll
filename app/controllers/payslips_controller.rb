@@ -8,15 +8,14 @@ class PayslipsController < ApplicationController
   end
   
   def toggle_paid
-   @payslips = Payslip.find(params[:id])
-   @payslips.toggle(:paid)
-   redirect_to user_payslip_path
-   return @payslips.paid
+    @payslips = Payslip.find(params[:id])
+
+    @payslips.toggle(:paid)
+    @payslips.save  
+    flash[:success] = "Payslip updated!"
+    redirect_to payrolls_path 
   end
 
-  # def toggle_paid_false
-  #   return false
-  # end
 
   def show
 
@@ -93,6 +92,7 @@ class PayslipsController < ApplicationController
   end
 
   def edit
+    @payslips = Payslip.find(params[:id])
   end
 
   def update

@@ -30,10 +30,6 @@ class PayrollsController < ApplicationController
   end
 
 
-  def toggle_paid
-  end
-
-
   private 
 
   def payroll_params

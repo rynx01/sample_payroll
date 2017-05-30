@@ -4,7 +4,6 @@
   <caption>Period: <%= @payroll.start_period %> to <%= @payroll.end_period %></caption>
   <thead>
     <tr>
-      <th bgcolor="black"></th>
       <th>Employees</th>
       <th>Account Number</th> 
       <th>Bank</th>
@@ -82,14 +81,13 @@
         
 
         <td>
-        <% if payslip.paid = "false" %>
-          <%= link_to "Unpaid", :method => :toggle_paid, :title => "Paid?" %>
+        <% if !payslip.paid %>
+          <%= "Unpaid" %>
         <% else %>
-          <%= link_to "Paid", :method => :toggle_paid, :title => "Not yet paid?" %>
+          <%= "Paid" %>
         <% end %>
         </td>
 
-      
 
       </tr>
     <% end %>

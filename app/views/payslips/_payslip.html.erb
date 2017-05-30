@@ -30,7 +30,8 @@
            <th>&nbsp;</th>
          </tr>
          <tr>
-           <th>SSS</th>
+            <th>SSS</th>
+
            <th>&nbsp;</th>
            <th>&nbsp;</th>
            <th><%= number_to_currency payslip.sss, unit: "PHP " %></th>
@@ -201,10 +202,10 @@
            <th> &nbsp; </th>
            <th> Paid? </th>
            <th>
-           <% if payslip.paid = "false" %>
-           <%= link_to "#{payslip.paid}", toggle_paid_user_payslip_path, :method => :toggle_paid, data: { confirm: "Paid?" } %>
+           <% if !payslip.paid%>
+           <%= link_to "false", toggle_paid_user_payslip_path, :method => :toggle_paid, data: { confirm: "Paid?" } %>
            <% else %>
-           <%= link_to "#{payslip.paid}", toggle_paid_user_payslip_path, :method => :toggle_paid, data: { confirm: "Not yet Paid?" } %>
+           <%= link_to "true", toggle_paid_user_payslip_path, :method => :toggle_paid, data: { confirm: "Not yet Paid?" } %>
            <% end %>
            </th>
          </tr>
