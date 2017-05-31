@@ -1,9 +1,6 @@
 class PayslipsController < ApplicationController
 
   def index
-    # @users = User.all
-    # @payrolls  = Payroll.paginate(page: params[:page])
-    @payslips  = Payslip.paginate(page: params[:page])
   
   end
   
@@ -14,6 +11,22 @@ class PayslipsController < ApplicationController
     @payslips.save  
     flash[:success] = "Payslip updated!"
     redirect_to payrolls_path 
+  end
+
+  def sss_bracket
+
+  end
+
+  def philhealth_bracket
+
+  end
+
+  def pagibig_bracket
+
+  end
+
+  def withholding_bracket
+    
   end
 
 
@@ -106,7 +119,7 @@ class PayslipsController < ApplicationController
   
   def payslip_params
     params.require(:payslip).permit(:base_salary, :sss, :pagibig, 
-                                                :philhealth, :paid)
+                                                :philhealth, :paid, :avatar)
   end
 
   

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170522063411) do
+ActiveRecord::Schema.define(version: 20170531073259) do
 
   create_table "allowances", force: :cascade do |t|
     t.string   "description"
@@ -53,13 +53,17 @@ ActiveRecord::Schema.define(version: 20170522063411) do
   create_table "payslips", force: :cascade do |t|
     t.integer  "employee_id"
     t.integer  "payroll_id"
-    t.decimal  "base_salary", precision: 10, scale: 2
-    t.decimal  "sss",         precision: 6,  scale: 2
-    t.decimal  "pagibig",     precision: 6,  scale: 2
-    t.decimal  "philhealth",  precision: 6,  scale: 2
-    t.datetime "created_at",                                           null: false
-    t.datetime "updated_at",                                           null: false
-    t.boolean  "paid",                                 default: false
+    t.decimal  "base_salary",         precision: 10, scale: 2
+    t.decimal  "sss",                 precision: 6,  scale: 2
+    t.decimal  "pagibig",             precision: 6,  scale: 2
+    t.decimal  "philhealth",          precision: 6,  scale: 2
+    t.datetime "created_at",                                                   null: false
+    t.datetime "updated_at",                                                   null: false
+    t.boolean  "paid",                                         default: false
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
     t.index ["employee_id"], name: "index_payslips_on_employee_id"
     t.index ["payroll_id"], name: "index_payslips_on_payroll_id"
   end

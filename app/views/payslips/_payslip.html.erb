@@ -1,6 +1,12 @@
 <h1>Payslips(<%= @payslips.id %>)</h1>
 <h3>  
-  
+
+  <%= form_for @payslips, url: payrolls_path, html: { multipart: true } do |form| %>
+  <%= form.file_field :avatar %>
+  <% end %>
+
+
+
   <div>
      
 
@@ -30,22 +36,21 @@
            <th>&nbsp;</th>
          </tr>
          <tr>
-            <th>SSS</th>
+           <th>  <%= link_to "SSS", sss_bracket_user_payslip_url %> </th>
 
            <th>&nbsp;</th>
            <th>&nbsp;</th>
            <th><%= number_to_currency payslip.sss, unit: "PHP " %></th>
          </tr>
          <tr>
-           <th>PAGIBIG</th>
+           <th> <%= link_to "Pag-ibig", pagibig_bracket_user_payslip_url %> </th>
            <th>&nbsp;</th>
            <th>&nbsp;</th>
            <th><%= number_to_currency payslip.pagibig, unit: "PHP " %></th>
          </tr>
 
-
          <tr>
-           <th>Philhealth</th>
+           <th> <%= link_to "Philhealth", philhealth_bracket_user_payslip_url %> </th>
            <th>&nbsp;</th>
            <th>&nbsp;</th>
            <th><%= number_to_currency payslip.philhealth, unit: "PHP " %></th>
@@ -120,7 +125,7 @@
          </tr>
 
           <tr>
-           <th>Witholding Tax</th>
+           <th><%= link_to "Withholding tax", withholding_bracket_user_payslip_url %></th>
            <th> &nbsp; </th>
            <th> &nbsp; </th>
            <th><%= number_to_currency @withholding_tax, unit: "PHP " %></th>

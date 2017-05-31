@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
   root 'static_pages#home'
+
   get    '/signup',  		to: 'users#new'
   post   '/signup',  		to: 'users#create'
   get     '/login', 	    to: 'sessions#new'
   post    '/login', 	    to: 'sessions#create'
   delete '/logout',  		to: 'sessions#destroy'
+
 
   # resources :project
   
@@ -16,11 +18,16 @@ Rails.application.routes.draw do
     resources :payslips do
       member do
         post :toggle_paid
+        get  :sss_bracket
+        get  :philhealth_bracket
+        get  :pagibig_bracket
+        get  :withholding_bracket
       end
     end
   end
 
   resources :payrolls 
+
 
   # , only: [:edit, :delete, :create, :update, :destroy, :new, :index]
 
