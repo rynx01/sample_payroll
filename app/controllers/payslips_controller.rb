@@ -1,7 +1,7 @@
 class PayslipsController < ApplicationController
 
   def index
-  
+    @payslips = Payslip.find(params[:id])
   end
   
   def toggle_paid
@@ -43,8 +43,9 @@ class PayslipsController < ApplicationController
     @salary = @payslips.employee.base_salary/2
 
     #sss computation
-    @payslips.sss = @payslips.monthly_salary_sss*0.0363
-    @employer_sss = @payslips.monthly_salary_sss*0.0737
+    @payslips.sss = sssBracket(@salary)*0.0363
+    # @payslips.sss = @payslips.monthly_salary_sss*0.0363
+    # @employer_sss = @payslips.monthly_salary_sss*0.0737
 
     #philhealth_computation
     @monthly_salary_philhealth = philBracket(@salary)
@@ -121,7 +122,25 @@ class PayslipsController < ApplicationController
     params.require(:payslip).permit(:base_salary, :sss, :pagibig, 
                                                 :philhealth, :paid, :avatar)
   end
+  
 
+  def sssBracket(salary)
+    thousands = salary / 1000
+    hundreds  = salary % 1000
+    percent   = hundreds / 1000.0
+
+    if   percent < 0.25
+     thousands = thousands * 1000
+    elsif percent < 0.75
+     thousands = (thousands * 1000) + 500
+    elsif thousands >= 15
+     thousands = thousands = 16000
+    else 
+     thousands = (thousands + 1) * 1000
+    end
+
+    return thousands
+  end
   
 
   def philBracket (salary)

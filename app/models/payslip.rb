@@ -2,8 +2,8 @@ class Payslip < ApplicationRecord
   belongs_to :employee, class_name: "User", foreign_key: :employee_id
   belongs_to :payroll
   
-  has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
-  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
+  # has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
+  # validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
   
   # attr_accessor :monthly_salary_sss, :monthly_salary_philhealth
 
