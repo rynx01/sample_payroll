@@ -18,8 +18,8 @@
       <%= f.label :name %>
       <%= f.text_field :name, class: 'form-control' %>
 
-      <%= f.label :birthday, "Birthday (mm/dd/yyyy)" %>
-      <%= f.text_field :birthday, class: 'form-control' %>
+      <%= f.label "Birthday:" %>  
+      <%= f.date_select :birthday, :order => [:day, :month, :year], :start_year => 1900, :end_year => Time.now.year - 15 %>
 
       <%= f.label :contact_no, "Contact Number" %>
       <%= f.text_field :contact_no, class: 'form-control' %>
@@ -36,8 +36,9 @@
       <%= f.label :no_of_dependents, "No. of Dependents" %>
       <%= f.text_field :no_of_dependents, class: 'form-control' %>
 
-      <%= f.label :status, "Status" %>
-      <%= f.text_field :status, class: 'form-control' %>
+      <%= f.label :status %>
+      <%= select(:user, :status, 
+      [['Single', "Single"], ['Married', "Married"]] )%>
 
       <%= f.submit "Save changes", class: "btn btn-primary" %>
     <% end %>

@@ -20,8 +20,8 @@
       <%= f.label :name %>
       <%= f.text_field :name, class: 'form-control' %>
 
-      <%= f.label :birthday, "Birthday (mm/dd/yyyy)" %>
-      <%= f.text_field :birthday, class: 'form-control' %>
+      <%= f.label "Birthday:" %>  
+      <%= f.date_select :birthday, :order => [:day, :month, :year], :start_year => 1900, :end_year => Time.now.year - 15, class: 'form-control' %>
 
       <%= f.label :contact_no, "Contact Number" %>
       <%= f.text_field :contact_no, class: 'form-control' %>
@@ -38,11 +38,11 @@
       <%= f.label :no_of_dependents, "No. of Dependents" %>
       <%= f.text_field :no_of_dependents, class: 'form-control' %>
 
-      <%= f.label :status, "Status" %>
-      <%= f.text_field :status, class: 'form-control' %>
-      
-      <%= f.label :admin %>
-      <%= f.check_box :admin, class: 'form-control' %>
+      <%= f.label :status %>
+      <%= select(:user, :status, [['Single', "Single"], ['Married', "Married"]], class: 'form-control' )%>
+
+      <%= f.label "Admin?", class: 'admin' %>
+      <%= f.check_box :admin, class: 'check_box_admin' %>
 
       <%= f.submit "Create my account", class: "btn btn-primary" %>
     <% end %>
