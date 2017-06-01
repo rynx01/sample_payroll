@@ -319,7 +319,7 @@ class Payslip < ApplicationRecord
     return final_pay
   end
   
-
+  
 
 private
 

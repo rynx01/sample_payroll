@@ -3,10 +3,10 @@
   <div><%= @payroll.errors.full_messages.join(", ") %></div>
 
 	<%= f.label "From:" %>
-	<%= date_select :payroll, :start_period %>
+	<%= date_select :payroll, :start_period, :order => [:day, :month, :year] %>
 
 	<%= f.label "To:" %>
-	<%= date_select :payroll, :end_period %>
+	<%= date_select :payroll, :end_period, :order => [:day, :month, :year] %>
 
 	<%= f.submit "Save changes", class: "btn btn-primary" %>
 <% end %>

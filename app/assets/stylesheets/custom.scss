@@ -12,6 +12,23 @@ $gray-medium-light: #eaeaea;
   box-sizing:         border-box;
 }
 
+.user_data{
+  font-size: 1.5em;
+  float: center;
+  margin-top:10%;
+  margin-right:5%;
+  margin-left:5%;
+  margin-bottom:5%;
+  width: 90%;
+  border: 1px solid black;
+  text-align: center; 
+}
+
+.profile{
+  margin-top: 5%;
+  font-size: 1em;
+}
+
 .admin{
   margin-left: 45%;
 }

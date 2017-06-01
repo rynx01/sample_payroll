@@ -77,19 +77,23 @@
 
 
         </td>
-
         <td> <%= number_to_currency payslip.monthly_final_pay, unit: "PHP " %> </td>
         
+        
+        <td>
+        &nbsp;&nbsp;Paid?&nbsp;&nbsp;
+        </td>
 
         <td>
         <% if !payslip.paid %>
-          <%= "Unpaid" %>
+          &nbsp;<%= link_to "Unpaid", toggle_paid_user_payslip_path(user_id: payslip.employee.id, id: payslip.id, payroll_id: @payroll.id), :method => :toggle_paid, data: { confirm: "Paid?" } %>&nbsp;
         <% else %>
-          <%= "Paid" %>
+          &nbsp;<%= link_to "Paid", toggle_paid_user_payslip_path(user_id: payslip.employee.id, id: payslip.id, payroll_id: @payroll.id), :method => :toggle_paid, data: { confirm: "Paid?" } %>&nbsp;
         <% end %>
         </td>
 
-
+ 
+     
       </tr>
     <% end %>
     

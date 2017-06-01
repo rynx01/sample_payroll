@@ -1,14 +1,13 @@
 <h1>Payslips(<%= @payslips.id %>)</h1>
 <h3>  
 
-  <%= form_for @payslips, url: payrolls_path, html: { multipart: true } do |form| %>
+  <%= form_for @payslips, url: user_payslip_path(user_id: @payslips.employee.id, id: payslip.id), html: { multipart: true } do |form| %>
+
   <%= form.file_field :avatar %>
+  <%= form.submit "Save image" %>
   <% end %>
 
-
-
   <div>
-     
 
     <div class="Employee_data"> Employee name </div>
       <div class="Employee_name">
@@ -203,17 +202,13 @@
          </tr>
 
          <tr>
-           <th >&nbsp;</th>
+           <th >Image</th>
            <th> &nbsp; </th>
-           <th> Paid? </th>
-           <th>
-           <% if !payslip.paid%>
-           <%= link_to "false", toggle_paid_user_payslip_path, :method => :toggle_paid, data: { confirm: "Paid?" } %>
-           <% else %>
-           <%= link_to "true", toggle_paid_user_payslip_path, :method => :toggle_paid, data: { confirm: "Not yet Paid?" } %>
-           <% end %>
-           </th>
+           <th> &nbsp; </th>
+           <th><%= payslip.avatar_file_name %></th>
          </tr>
+
+        
 
 
          

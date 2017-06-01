@@ -1,7 +1,8 @@
 class PayslipsController < ApplicationController
 
   def index
-    @payslips = Payslip.find(params[:id])
+    @user = User.find(params[:user_id])
+    @payslips = Payslip.all
   end
   
   def toggle_paid
@@ -10,7 +11,11 @@ class PayslipsController < ApplicationController
     @payslips.toggle(:paid)
     @payslips.save  
     flash[:success] = "Payslip updated!"
-    redirect_to payrolls_path 
+    if params[:payroll_id] 
+      redirect_to payroll_path(params[:payroll_id])
+    else
+      redirect_to payrolls_path 
+    end
   end
 
   def sss_bracket

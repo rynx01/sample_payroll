@@ -1,3 +1,5 @@
+<h1> Employee Profile </h1>
+
 <% provide(:title, @user.username) %>
 <div class="row">
   <aside class="col-md-4">
@@ -5,8 +7,18 @@
       <h1>
         <%= gravatar_for @user %>
         
-        <%= @user.name %>
-        
+        <div class="profile">
+        <%= @user.name %></br>
+        <%= @user.status %></br>
+        Number of Dependents: <%= @user.no_of_dependents %></br>
+        <% if @user.created_at >= 6 %>
+         Trainee
+        <% else %>
+         Regular
+        <% end %>
+        </div>
+        <br/><br/>
+
       </h1>
 
 
@@ -16,11 +28,44 @@
   </aside>
 
   
+  <table class="user_data">
+   <tr>
+     <td> Date Hired:  </td>
+     <td> <%= @user.created_at.to_date %> </td>
+   </tr>
 
+   <tr>
+      <td> Base Salary:  </td>
+      <td> <%= number_to_currency @user.base_salary, unit: "PHP " %></td>
+   </tr>
+
+   <tr>
+      <td> SSS:  </td>
+      <td> <%=  @user.base_salary %></td>
+   </tr>
+
+   <tr>
+      <td> Philhealth:  </td>
+      <td> <%= number_to_currency @user.base_salary, unit: "PHP " %></td>
+   </tr>
+
+   <tr>
+      <td> Pagibig:  </td>
+      <td> <%= number_to_currency @user.base_salary, unit: "PHP " %></td>
+   </tr>
+
+   
+
+  </table>
+ 
+
+  
+  
+   <div>
   <% if logged_in? && current_user.admin? %>
   
- 	<%= form_tag(new_user_reimbursement_path(user_id: @user.id), :method => "get", class: "add_reimbursement") do %>
- 	  
+  <%= form_tag(new_user_reimbursement_path(user_id: @user.id), :method => "get", class: "add_reimbursement") do %>
+    
       <%= submit_tag "Add new Reimbursement"%>
 
 
@@ -30,9 +75,7 @@
     <% end %>
 
   <% end %>
-
-
-  
+  </div>
 
   <div class="col-md-8">
 
@@ -44,7 +87,7 @@
             </ol>
             <% end %>
 
-    </div>
+  </div>
   
 
    <!-- <button type="button" onclick="alert('Hello world!')">Click Me!</button> -->

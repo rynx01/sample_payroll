@@ -60,6 +60,30 @@ class UsersController < ApplicationController
     end
   end
 
+  def compute_sss(salary)
+
+    @user = User.find(params[:id])
+    salary = @user.base_salary/2
+
+    thousands = salary / 1000
+    hundreds  = salary % 1000
+    percent   = hundreds / 1000.0
+
+    if   percent < 0.25
+     thousands = thousands * 1000
+    elsif percent < 0.75
+     thousands = (thousands * 1000) + 500
+    elsif thousands >= 15
+     thousands = thousands = 16000
+    else 
+     thousands = (thousands + 1) * 1000
+    end
+
+    # return ((percent < 0.25) ? (thousands * 1000) : (percent < 0.75 ? (thousands * 1000) + 500 : (thousands >= 15 ? 16000 :(thousands + 1) * 1000)))*0.0363  
+    return thousands * 0.0363
+
+  end
+
   private
 
     def user_params

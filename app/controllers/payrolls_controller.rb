@@ -25,6 +25,8 @@ class PayrollsController < ApplicationController
     @payroll = Payroll.find(params[:id])
     @payslips = @payroll.payslips.includes(:employee)
   end
+
+  
  
   def destroy
   end
