@@ -18,8 +18,22 @@
       <%= f.label :name %>
       <%= f.text_field :name, class: 'form-control' %>
 
+      <%= f.label :base_salary, "Base Salary" %>
+      <%= f.text_field :base_salary, class: 'form-control' %>
+
       <%= f.label "Birthday:" %>  
       <%= f.date_select :birthday, :order => [:day, :month, :year], :start_year => 1900, :end_year => Time.now.year - 15 %>
+
+      <%= f.label "Date Hired:" %>  
+      <%= f.date_select :date_hired, :order => [:day, :month, :year], :start_year => 1900, :end_year => Time.now.year, class: 'form-control' %>
+
+      <% if current_user.admin? %>
+      <%= f.label :position %>
+      <%= select(:user, :status, [['Trainee', "Trainee"], ['Regular', "Regular"]], class: 'form-control' )%>
+      <% end %>
+
+      <%= f.label :job, "Job:" %>
+      <%= f.text_field :job, class: 'form-control' %>
 
       <%= f.label :contact_no, "Contact Number" %>
       <%= f.text_field :contact_no, class: 'form-control' %>
@@ -27,11 +41,20 @@
       <%= f.label :account_no, "Account Number" %>
       <%= f.text_field :account_no, class: 'form-control' %>
 
+      <%= f.label :sss_no, "SSS Number" %>
+      <%= f.text_field :sss_no, class: 'form-control' %>
+
+      <%= f.label :philhealth_no, "Philhealth Number" %>
+      <%= f.text_field :philhealth_no, class: 'form-control' %>
+
+      <%= f.label :pagibig_no, "Pag-ibig Number" %>
+      <%= f.text_field :pagibig_no, class: 'form-control' %>
+
+      <%= f.label :tin_no, "TIN Number" %>
+      <%= f.text_field :tin_no, class: 'form-control' %>
+
       <%= f.label :bank, "Bank" %>
       <%= f.text_field :bank, class: 'form-control' %>
-
-      <%= f.label :base_salary, "Base Salary" %>
-      <%= f.text_field :base_salary, class: 'form-control' %>
 
       <%= f.label :no_of_dependents, "No. of Dependents" %>
       <%= f.text_field :no_of_dependents, class: 'form-control' %>
@@ -39,6 +62,11 @@
       <%= f.label :status %>
       <%= select(:user, :status, 
       [['Single', "Single"], ['Married', "Married"]] )%>
+      
+      <% if current_user.admin? %>
+      <%= f.label "Admin?", class: 'admin' %>
+      <%= f.check_box :admin, class: 'check_box_admin' %>
+      <% end %>
 
       <%= f.submit "Save changes", class: "btn btn-primary" %>
     <% end %>

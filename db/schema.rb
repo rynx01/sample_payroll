@@ -83,6 +83,7 @@ ActiveRecord::Schema.define(version: 20170531073259) do
   create_table "users", force: :cascade do |t|
     t.string   "username"
     t.date     "birthday"
+    t.date     "date_hired"
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
     t.string   "password_digest"
@@ -93,6 +94,13 @@ ActiveRecord::Schema.define(version: 20170531073259) do
     t.string   "bank"
     t.integer  "base_salary"
     t.integer  "no_of_dependents"
+    t.string   "address"
+    t.string   "sss_no"
+    t.string   "tin_no"
+    t.string   "pagibig_no"
+    t.string   "philhealth_no"
+    t.string   "position"
+    t.string   "job"
     t.string   "status"
   end
 

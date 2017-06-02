@@ -17,6 +17,12 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @reimbursements = @user.reimbursements.all
     
+    @compute_sss = compute_sss
+    @philBracket = philBracket/40
+    @pagibigBracket = pagibigBracket
+
+    # @position = position_change
+
 
     # redirect_to url_for(:controller => :reimbursements, :action => :show
       # :reimbursements => :category, :reimbursements => :description, :reimbursements => :amount)
@@ -24,8 +30,21 @@ class UsersController < ApplicationController
     # @reimbursements = @user.reimbursements.find(params[:id])
   end
 
+  # def position_change
+  #   @user = User.find(params[:id])
+  #   position = @user.position
+  #   date_hired = @user.date_hired
+  #   if date_hired <= 6.months.ago && position == "Trainee"
+  #     position = "Regular"
+  #   else
+  #     return position
+  #   end
+  # end
+
   def destroy
     User.find(params[:id]).destroy
+    # @payslips = Payslip.all
+    # @user.payslips.destroy
     flash[:success] = "Employee deleted"
     redirect_to users_url
   end
@@ -60,7 +79,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def compute_sss(salary)
+  def compute_sss
 
     @user = User.find(params[:id])
     salary = @user.base_salary/2
@@ -84,11 +103,41 @@ class UsersController < ApplicationController
 
   end
 
+  def philBracket
+
+      @user = User.find(params[:id])
+      salary = @user.base_salary/2
+
+      salary = salary/1000
+      if salary <= 7
+        salary = 7000
+      elsif salary >= 35
+        salary = 35000
+      else
+        return salary * 1000
+      end 
+  end
+
+  def pagibigBracket
+
+    @user = User.find(params[:id])
+    salary = @user.base_salary/2
+
+      if salary <= 1500
+        salary = salary*0.01
+      else
+        salary = salary*0.02
+        if salary >= 100
+          return salary = 100
+        end
+      end
+  end
+
   private
 
     def user_params
-      params.require(:user).permit(:username, :password, :password_confirmation, :admin, :name, :birthday, 
-        :contact_no, :account_no, :bank, :base_salary, :no_of_dependents, :status)
+      params.require(:user).permit(:username, :password, :password_confirmation, :admin, :name, :birthday, :date_hired, :job, :position,
+        :contact_no, :account_no, :bank, :base_salary, :no_of_dependents, :status, :sss_no, :philhealth_no, :pagibig_no, :tin_no, :address)
     end
 
     def verify_is_admin
@@ -105,7 +154,7 @@ class UsersController < ApplicationController
     # Confirms the correct user.
     def correct_user
       @user = User.find(params[:id])
-      redirect_to(root_url) unless current_user?(@user)
+      redirect_to(root_url) unless current_user?(@user) || current_user.admin?
     end
 
 

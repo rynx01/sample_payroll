@@ -11,14 +11,22 @@ User.create!(username:  "admin",
              password:              "admin",
              password_confirmation: "admin",
              admin: true,
-             name:  "ADMIN",
+             name:  "Administrator",
              birthday:  "May 6, 1988",
-             contact_no:  "0",
-             account_no:  "12343435346363433",
+             contact_no:  "09162411416",
+             account_no:  "00742020882080",
              bank:  "BDO",
              base_salary:  "18000",
              no_of_dependents: "0",
-             status: "Single"
+             status: "Single",
+             sss_no: "01030425020240",
+             philhealth_no: "913019104220",
+             pagibig_no: "1290294208420",
+             tin_no: "9039101082089",
+             address: "Katipunan Ave, Prince Condo",
+             date_hired: "April 4, 2017",
+             job: "Application Developer",
+             position: "Trainee"
              )
 
 99.times do |n|
@@ -30,9 +38,19 @@ User.create!(username:  "admin",
                password:              password,
                password_confirmation: password,
                status:              "Single",
+               birthday:            "May 6, 1988",
+               date_hired: "April 4, 2017",
+               address:              "Katipunan Ave, Prince Condo",
                base_salary:         Random::rand(30000) + 12000,
                bank: ["BDO", "BPI", "Metrobank", "Unionbank", "PSBank"].sample,
                account_no: Faker::Number.number(10),
-               no_of_dependents: "0"
+               sss_no: Faker::Number.number(10),
+               philhealth_no: Faker::Number.number(10),
+               pagibig_no: Faker::Number.number(10),
+               tin_no: Faker::Number.number(10),
+               no_of_dependents: "0",
+               contact_no:  Faker::Number.number(10),
+               job: "Application Developer",
+               position: "Trainee"
                )
 end

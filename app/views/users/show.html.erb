@@ -11,11 +11,7 @@
         <%= @user.name %></br>
         <%= @user.status %></br>
         Number of Dependents: <%= @user.no_of_dependents %></br>
-        <% if @user.created_at >= 6 %>
-         Trainee
-        <% else %>
-         Regular
-        <% end %>
+        <%= @user.position %>
         </div>
         <br/><br/>
 
@@ -30,68 +26,104 @@
   
   <table class="user_data">
    <tr>
-     <td> Date Hired:  </td>
-     <td> <%= @user.created_at.to_date %> </td>
+     <td> <b>Date Hired:</b>  </td>
+     <td> <%= @user.date_hired %> </td>
    </tr>
 
    <tr>
-      <td> Base Salary:  </td>
-      <td> <%= number_to_currency @user.base_salary, unit: "PHP " %></td>
+     <td> <b>Position:</b>  </td>
+     <td> <%= @user.position %> </td>
    </tr>
 
    <tr>
-      <td> SSS:  </td>
-      <td> <%=  @user.base_salary %></td>
+     <td> <b>Job: </b>  </td>
+     <td> <%= @user.job %> </td>
    </tr>
 
    <tr>
-      <td> Philhealth:  </td>
-      <td> <%= number_to_currency @user.base_salary, unit: "PHP " %></td>
+      <td> <b>Date of Birth:</b>  </td>
+      <td> <%=  @user.birthday %></td>
    </tr>
 
    <tr>
-      <td> Pagibig:  </td>
-      <td> <%= number_to_currency @user.base_salary, unit: "PHP " %></td>
+      <td> <b>Address:</b>  </td>
+      <td> <%=  @user.address %></td>
    </tr>
 
+   <tr>
+      <td> <b>Contact Number:</b>  </td>
+      <td> <%=  @user.contact_no %></td>
+   </tr>
+
+   <tr>
+      <td> &nbsp;  </td>
+      <td> &nbsp;  </td>
+   </tr>
+
+   <tr>
+      <td> <b>SSS Number:</b>  </td>
+      <td> <%=  @user.sss_no %></td>
+   </tr>
+
+   <tr>
+      <td> <b>Philhealth Number:</b>  </td>
+      <td> <%= @user.philhealth_no %></td>
+   </tr>
+
+   <tr>
+      <td> <b>Pagibig Number:</b> </td>
+      <td> <%= @user.pagibig_no %></td>
+   </tr>
+
+   <tr>
+      <td> <b>Tin Number:</b>  </td>
+      <td> <%= @user.tin_no %></td>
+   </tr>
+
+    <tr>
+      <td> <b>Bank / Account Number:</b>  </td>
+      <td> (<%= @user.bank %>) &nbsp; <%= @user.account_no %></td>
+   </tr>
+
+   <tr>
+      <td> &nbsp;  </td>
+      <td> &nbsp;  </td>
+   </tr>
+
+   <tr>
+      <td> <b>Base Salary:</b>  </td>
+      <td> <b><%= number_to_currency @user.base_salary, unit: "PHP " %></b></td>
+   </tr>
+
+   <tr>
+      <td> &nbsp;  </td>
+      <td> &nbsp;  </td>
+   </tr>
+
+   <tr>
+      <td> <b>SSS Contribution:</b>  </td>
+      <td> <b><%= number_to_currency @compute_sss, unit: "PHP " %></b> </td>
+   </tr>
+
+   <tr>
+      <td> <b>Philhealth Contribution:</b>   </td>
+      <td> <b><%= number_to_currency @philBracket, unit: "PHP " %></b></td>
+   </tr>
+
+   <tr>
+      <td> <b>Pag-ibig Contribution:</b>   </td>
+      <td> <b><%= number_to_currency @pagibigBracket, unit: "PHP " %></b></td>
+   </tr>
    
 
   </table>
- 
 
-  
-  
-   <div>
-  <% if logged_in? && current_user.admin? %>
-  
-  <%= form_tag(new_user_reimbursement_path(user_id: @user.id), :method => "get", class: "add_reimbursement") do %>
-    
-      <%= submit_tag "Add new Reimbursement"%>
+  <h2> <%= link_to "Edit Employee Data", edit_user_path(@user.id) %></h2>
 
-
-      <%= select(:reimbursement, :category, 
-      [['Reimbursements', "Reimbursements"], ['Allowances', "Allowances"], ['(+)Adjustments', "(+)Adjustments"], ['(-)Adjustments', "(-)Adjustments"]]) %>
-
+  <h2> Check employee payslips:
+    <% @user.payslips.each do |payslip| %>
+    </br></br>
+    <%= link_to "Payslip No: #{payslip.id}", user_payslip_path(@user.id, payslip.id) %>
     <% end %>
-
-  <% end %>
-  </div>
-
-  <div class="col-md-8">
-
-    
-            <% if @user.reimbursements.any? %>
-            <h3> Reimbursements </h3>
-            <ol class="reimbursements">
-            <%= render @reimbursements %>
-            </ol>
-            <% end %>
-
-  </div>
-  
-
-   <!-- <button type="button" onclick="alert('Hello world!')">Click Me!</button> -->
-
-
-</div>
-
+  </h2>
+ 

@@ -8,8 +8,11 @@
 
 
 <div class= 'table_payroll'>
-
+  <% if @payrolls.any? %>
 	<%= render @payrolls %>
+  <% else %>
+  
+  <% end %>
 
 
 </div>

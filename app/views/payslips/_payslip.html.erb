@@ -110,6 +110,7 @@
              <th><%= number_to_currency reimbursement.amount, unit: "PHP " %> <br /></th>
              <th> &nbsp; </th></tr> <% end %>
             <% end %>
+            <th>&nbsp;</th>
             <th> <%= link_to "Add new reimbursement?", new_user_reimbursement_path %> </th>
             <th> &nbsp; </th>
             <th> &nbsp; </th>
@@ -157,8 +158,9 @@
             <tr>
              <th>Description: </th>
              <th><%= nope_adjustment.description %> <br/></th>
+             <th> &nbsp; </th>
              <th><%= number_to_currency nope_adjustment.amount, unit: "PHP " %> <br /></th>
-             <th> &nbsp; </th></tr> <% end %>
+             </tr> <% end %>
             <% end %>
          </tr>
          <th></th>
