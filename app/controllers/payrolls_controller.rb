@@ -29,7 +29,9 @@ class PayrollsController < ApplicationController
   
  
   def destroy
-    Payroll.find(params[:id]).destroy
+    @payroll = Payroll.find(params[:id])
+    @payroll.payslips.destroy_all
+    @payroll.destroy
     flash[:success] = "Payroll deleted"
     redirect_to payrolls_path
   end

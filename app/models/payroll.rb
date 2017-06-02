@@ -4,8 +4,9 @@ class Payroll < ApplicationRecord
   validates :end_period, presence: true
   validate :end_is_after_start_period
 
-  has_many :payslips, inverse_of: :payroll
+  has_many :payslips, inverse_of: :payroll, dependent: :destroy
   after_create :create_payslips
+  before_save :update_id
 
 private
   def create_payslips
@@ -16,5 +17,13 @@ private
 
   def end_is_after_start_period
     errors.add(:end_period, "should be after start period") if end_period <= start_period
+  end
+
+  def update_id
+    largest_id = Payroll.count + 1
+    while Payroll.find_by(id: largest_id)
+      largest_id += 1
+    end
+    self.id = largest_id
   end
 end
