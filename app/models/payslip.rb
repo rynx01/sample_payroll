@@ -318,8 +318,9 @@ class Payslip < ApplicationRecord
     final_pay = employee.base_salary + monthly_total_ARA - monthly_total_deductions
     return final_pay
   end
+
   
-  
+
 
 private
 

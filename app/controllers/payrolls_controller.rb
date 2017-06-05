@@ -23,7 +23,14 @@ class PayrollsController < ApplicationController
 
   def show
     @payroll = Payroll.find(params[:id])
-    @payslips = @payroll.payslips.includes(:employee)
+
+      # @users = User.all
+        if params[:search]
+          @payslips = @payroll.payslips.joins(:employee).where("'users'.'name' LIKE ?", "%#{params['search']}%")
+        else
+          @payslips = @payroll.payslips
+        end
+
   end
 
     

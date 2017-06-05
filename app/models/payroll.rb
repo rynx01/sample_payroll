@@ -8,6 +8,13 @@ class Payroll < ApplicationRecord
   after_create :create_payslips
   before_save :update_id
 
+
+  def self.search(search)
+    # self.payslips.map(&:payslips).joins(:user).where("name LIKE ?", "%#{search}%")
+    # left_joins(:payslips, :users).where("name LIKE ?", "%#{search}%")
+    left_joins(:payslips, :users).where("user.name LIKE ?", "%#{search}%")
+  end
+
 private
   def create_payslips
     User.all.each do |employee|

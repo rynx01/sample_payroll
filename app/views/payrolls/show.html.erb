@@ -4,6 +4,17 @@
 <table style="width:100%" >
   <caption>Period: <%= @payroll.start_period %> to <%= @payroll.end_period %></caption>
 
+
+
+<div class="search_bar">
+<%= form_tag(payroll_path, :method => "get", id: "search-form") do %>
+<%= text_field_tag :search, nil, placeholder: "Search Employees <Enter Name>" %>
+<%= submit_tag "Search" %>
+<% end %>
+</div>
+
+
+
   <div>
             <%= link_to "Pay all?", 
             toggle_pay_all_user_payslip_path(@payroll.id), 
