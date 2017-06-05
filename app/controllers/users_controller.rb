@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     @compute_sss = compute_sss
     @philBracket = philBracket/40
     @pagibigBracket = pagibigBracket
-
+    @hired_status = hired_status
     # @position = position_change
 
 
@@ -77,6 +77,12 @@ class UsersController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def hired_status
+    @user = User.find(params[:id])
+    hired_status = (Time.now - @user.date_hired.to_time)/1.months
+    return hired_status.to_s.first(2).to_i
   end
 
   def compute_sss

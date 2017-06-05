@@ -27,7 +27,7 @@
   <table class="user_data">
    <tr>
      <td> <b>Date Hired:</b>  </td>
-     <td> <%= @user.date_hired %> </td>
+     <td> <%= @user.date_hired %> [<%= @hired_status %> Months ago] </td>
    </tr>
 
    <tr>
@@ -82,7 +82,7 @@
 
     <tr>
       <td> <b>Bank / Account Number:</b>  </td>
-      <td> (<%= @user.bank %>) &nbsp; <%= @user.account_no %></td>
+      <td> [<%= @user.bank %>]&nbsp;<%= @user.account_no %></td>
    </tr>
 
    <tr>
