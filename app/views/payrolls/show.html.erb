@@ -3,6 +3,17 @@
 
 <table style="width:100%" >
   <caption>Period: <%= @payroll.start_period %> to <%= @payroll.end_period %></caption>
+
+  <div>
+            <%= link_to "Pay all?", 
+            toggle_pay_all_user_payslip_path(@payroll.id), 
+            :method => :toggle_pay_all, data: { confirm: "Pay all?" }, class: "btn btn-primary btn-block" %>
+
+            <%= link_to "Unpay all?", 
+            toggle_unpay_all_user_payslip_path(@payroll.id), 
+            :method => :toggle_unpay_all, data: { confirm: "Unpay all?" }, class: "btn btn-primary btn-block" %>
+  </div>
+
   <thead>
     <tr>
       <th>&nbsp;</th>
@@ -86,6 +97,7 @@
         </td>
 
         <td>
+
         <% if !payslip.paid %>
           &nbsp;<%= link_to "Unpaid", toggle_paid_user_payslip_path(user_id: payslip.employee.id, id: payslip.id, payroll_id: @payroll.id), :method => :toggle_paid, data: { confirm: "Paid?" } %>&nbsp;
         <% else %>
@@ -93,10 +105,14 @@
         <% end %>
         </td>
 
+
+
  
      
       </tr>
     <% end %>
+
+
     
   </tbody>
 </table>

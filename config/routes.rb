@@ -18,6 +18,8 @@ Rails.application.routes.draw do
     resources :payslips do
       member do
         post :toggle_paid
+        post :toggle_pay_all
+        post :toggle_unpay_all
         get  :sss_bracket
         get  :philhealth_bracket
         get  :pagibig_bracket
@@ -26,7 +28,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :payrolls 
+  resources :payrolls
 
 
   # , only: [:edit, :delete, :create, :update, :destroy, :new, :index]

@@ -1,11 +1,7 @@
 <h1>Payslips(<%= @payslips.id %>)</h1>
 <h3>  
 
-  <%= form_for @payslips, url: user_payslip_path(user_id: @payslips.employee.id, id: payslip.id), html: { multipart: true } do |form| %>
-
-  <%= form.file_field :avatar %>
-  <%= form.submit "Save image" %>
-  <% end %>
+  
 
   <div>
 
@@ -34,6 +30,7 @@
            <th><%= number_to_currency payslip.base_salary, unit: "PHP " %></th>
            <th>&nbsp;</th>
          </tr>
+
          <tr>
            <th>  <%= link_to "SSS", sss_bracket_user_payslip_url %> </th>
 
@@ -41,13 +38,14 @@
            <th>&nbsp;</th>
            <th><%= number_to_currency payslip.sss, unit: "PHP " %></th>
          </tr>
+
          <tr>
            <th> <%= link_to "Pag-ibig", pagibig_bracket_user_payslip_url %> </th>
            <th>&nbsp;</th>
            <th>&nbsp;</th>
            <th><%= number_to_currency payslip.pagibig, unit: "PHP " %></th>
          </tr>
-
+         
          <tr>
            <th> <%= link_to "Philhealth", philhealth_bracket_user_payslip_url %> </th>
            <th>&nbsp;</th>
@@ -80,10 +78,14 @@
              <th> &nbsp; </th></tr> <% end %>
             <% end %>
          </tr>
-         <th></th>
+
+        <% if !@payslips.paid? %>
+            <th>&nbsp;</th>
             <th> <%= link_to "Add new allowance?", new_user_allowance_path %></th>
             <th> &nbsp; </th>
             <th> &nbsp; </th>
+        <% end %>
+            
 
          <tr>
            <th> &nbsp; </th>
@@ -95,26 +97,31 @@
          <tr>
            <th>Reimbursements</th>
            <% @payslips.employee.reimbursements.each do |reimbursement| %> 
-            <% if @payslips.employee.reimbursements.count > 1 %>
-             <tr>
-             <th>Category: </th>
-             <th><%= reimbursement.category %> <br/></th>
-             <th><%= number_to_currency reimbursement.amount, unit: "PHP " %> <br /></th>
-             <th> &nbsp; </th>
-             </tr>
-            <% else %>
-            <th></th>
-            <tr>
-             <th>Category: </th>
-             <th><%= reimbursement.category %> <br/></th>
-             <th><%= number_to_currency reimbursement.amount, unit: "PHP " %> <br /></th>
-             <th> &nbsp; </th></tr> <% end %>
+              <% if @payslips.employee.reimbursements.count > 1 %>
+                 <tr>
+                 <th>Category: </th>
+                 <th><%= reimbursement.category %> <br/></th>
+                 <th><%= number_to_currency reimbursement.amount, unit: "PHP " %> <br /></th>
+                 <th> &nbsp; </th>
+                 </tr>
+              <% else %>
+                <tr>
+                   <th>Category: </th>
+                   <th><%= reimbursement.category %> <br/></th>
+                   <th><%= number_to_currency reimbursement.amount, unit: "PHP " %> <br /></th>
+                   <th> &nbsp; </th>
+                 </tr> 
+              <% end %>
             <% end %>
-            <th>&nbsp;</th>
+
+        <% if !@payslips.paid? %>
+            
             <th> <%= link_to "Add new reimbursement?", new_user_reimbursement_path %> </th>
             <th> &nbsp; </th>
             <th> &nbsp; </th>
          </tr> 
+
+        <% end %>
            
 
          <tr>
@@ -163,11 +170,13 @@
              </tr> <% end %>
             <% end %>
          </tr>
-         <th></th>
+
+        <% if !@payslips.paid? %>
+            <th> &nbsp;</th>
             <th> <%= link_to "Add new adjustment (less)?", new_user_nope_adjustment_path %></th>
             <th> &nbsp; </th>
             <th> &nbsp; </th>
-
+        <% end %>
          
          <tr>
            <th> &nbsp; </th>
@@ -178,23 +187,41 @@
 
          <tr>
            <th>Adjustments (Plus)</th>
+           <th> &nbsp; </th>
+           <th> &nbsp; </th>
+           <th> &nbsp; </th>
            <% @payslips.employee.dope_adjustments.each do |dope_adjustment| %> 
             <% if @payslips.employee.dope_adjustments.count > 1 %>
              <tr>
              <th>Description: </th>
              <th><%= dope_adjustment.description %> <br/></th>
-             <th><%= number_to_currency dope_adjustment.amount, unit: "PHP " %> <br />
              <th> &nbsp; </th>
+             <th><%= number_to_currency dope_adjustment.amount, unit: "PHP " %> <br />
              </th>
              </tr>
             <% else %>
-            <th>Description: <%= dope_adjustment.description %> <br/></th>
-            <th><%= number_to_currency dope_adjustment.amount, unit: "PHP " %> <br /></th><th> &nbsp; </th></tr> <% end %>
+            <tr>
+             <th>Description: </th>
+             <th><%= dope_adjustment.description %> <br/></th>
+             <th> &nbsp; </th>
+             <th><%= number_to_currency dope_adjustment.amount, unit: "PHP " %> <br /></th>
+             </tr> <% end %>
             <% end %>
          </tr>
-         <th></th>
-            <th> <%= link_to "Add new adjustment (plus)?", new_user_dope_adjustment_path %></th>
+
+         <% if !@payslips.paid? %>
+            <th> &nbsp;</th>
+            <th> <%= link_to "Add new adjustment (plus)?", new_user_dope_adjustment_path %> </th>
             <th> &nbsp; </th>
+            <th> &nbsp; </th>
+         <% end %>
+
+         <tr>
+           <th> &nbsp; </th>
+           <th> &nbsp; </th>
+           <th> &nbsp; </th>
+           <th> &nbsp; </th>
+         </tr>
 
          <tr class="Final">
            <th >Final</th>
@@ -203,15 +230,7 @@
            <th><%= number_to_currency @final_pay, unit: "PHP " %></th>
          </tr>
 
-         <tr>
-           <th >Image</th>
-           <th> &nbsp; </th>
-           <th> &nbsp; </th>
-           <th><%= payslip.avatar_file_name %></th>
-         </tr>
-
         
-
 
          
        </thead>

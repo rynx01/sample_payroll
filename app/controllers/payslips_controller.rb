@@ -18,6 +18,26 @@ class PayslipsController < ApplicationController
     end
   end
 
+ def toggle_pay_all
+    @payroll = Payroll.find(params[:id])
+
+    @payroll.payslips.each do |payslip|
+      payslip.update_attributes({paid: "true"})
+    end
+    flash[:success] = "All payslips are paid!"
+    redirect_to payroll_path
+  end
+
+  def toggle_unpay_all
+    @payroll = Payroll.find(params[:id])
+
+    @payroll.payslips.each do |payslip|
+      payslip.update_attributes({paid: "false"})
+    end
+    flash[:success] = "All payslips are not yet paid!"
+    redirect_to payroll_path
+  end
+
   def sss_bracket
 
   end
@@ -36,7 +56,7 @@ class PayslipsController < ApplicationController
 
 
   def show
-
+    
     @reimbursements = Reimbursement.all
     @payslips = Payslip.find(params[:id])
 
@@ -96,8 +116,8 @@ class PayslipsController < ApplicationController
 
     #final_pay computation
     @final_pay = (@payslips.employee.base_salary + @total_allowances + @total_reimbursements + @total_dope_adjustments) - (@payslips.sss + @payslips.pagibig + @payslips.philhealth + @withholding_tax + @total_dope_adjustments )
-
-
+ 
+    
   end
 
   def new
@@ -310,6 +330,4 @@ class PayslipsController < ApplicationController
       end
 
   end
-          
-
 end

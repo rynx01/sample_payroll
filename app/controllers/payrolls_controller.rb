@@ -26,7 +26,18 @@ class PayrollsController < ApplicationController
     @payslips = @payroll.payslips.includes(:employee)
   end
 
-  
+    
+  # def toggle_pay_all
+  #   # @payslips = @payroll.payslips.includes(:employee)
+  #   # @payslips.paid = "true"
+  #   # @payslips.save  
+  #   # flash[:success] = "Payslip updated!"
+  #   # if params[:payroll_id] 
+  #   #   redirect_to payroll_path(params[:payroll_id])
+  #   # else
+  #   redirect_to payrolls_path 
+  #   # end
+  # end
  
   def destroy
     @payroll = Payroll.find(params[:id])
