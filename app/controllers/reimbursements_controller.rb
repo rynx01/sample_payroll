@@ -67,7 +67,7 @@ class ReimbursementsController < ApplicationController
 
    private
     def reimbursements_params
-      params.require(:reimbursement).permit(:category, :description, :amount)
+      params.require(:reimbursement).permit(:category, :description, :amount, :avatar)
     end
 
 end
