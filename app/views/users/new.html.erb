@@ -3,6 +3,7 @@
 
 <h1>Sign up</h1>
 
+
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(@user, url: signup_path) do |f| %>
@@ -71,5 +72,13 @@
     <% end %>
   </div>
 
+</div>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+  <br><br>
+            <%= link_to "Create users from the users.csv file?", 
+            users_from_file_path, :method => :create_csv, data: { confirm: "Create Users?" }, class: "btn btn-primary btn-block" %>
+  </div>
 </div>
 <% end %>

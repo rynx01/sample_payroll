@@ -4,7 +4,10 @@
   <span class="category"><h4>Category:</h4><%= reimbursement.category %></span>
   <span class="description"><h4>Description:</h4><%= reimbursement.description %></span>
   <span class="amount"><h4>Amount:</h4>₱<%= reimbursement.amount %></span>
-  
+  <br><br>
+
+  <%= image_tag reimbursement.avatar.url(:medium) %>
+
   <% if current_user?(reimbursement.user) || logged_in? && current_user.admin? %>
      <br>
       <%= link_to "Add", new_user_reimbursement_path(id: reimbursement.id, user_id: @user.id), data: { confirm: "Add new reimbursement?" } %>
@@ -18,13 +21,10 @@
        <% end %>
 
   <% end %>
-  <br><br>
-  <%= image_tag reimbursement.avatar.url(:medium) %>
+  <br>
   
   <span class="timestamp">
     Posted  <%= time_ago_in_words(reimbursement.created_at) %> ago.
-
-  
   </span>
   
 

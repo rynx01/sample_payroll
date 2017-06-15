@@ -1,8 +1,11 @@
 class UsersController < ApplicationController
+
+  require 'csv'
+
   #before_filter :verify_is_admin, :except => [:create]
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
   before_action :correct_user,   only: [:edit, :update]
-  
+
 
   def index
     @users = User.paginate(page: params[:page])
@@ -43,15 +46,12 @@ class UsersController < ApplicationController
 
   def destroy
     User.find(params[:id]).destroy
-    # @payslips = Payslip.all
-    # @user.payslips.destroy
     flash[:success] = "Employee deleted"
     redirect_to users_url
   end
 
   def new
   	@user = User.new
-    
   end
 
   def create
@@ -63,6 +63,46 @@ class UsersController < ApplicationController
     else
       render 'new'
     end
+  end
+
+  def add_users_csv
+    employee_array = []
+    CSV.foreach("users.csv", converters: :all, skip_blanks: :true, headers: :true, :col_sep => ",") do |row| 
+      employee_array << row
+    end
+    return employee_array
+  end
+
+  def create_csv
+    @employee_array = add_users_csv
+    username = []
+    @employee_array = add_users_csv
+    @employee_array.each do |employee_array|
+      @user = User.create(username:               employee_array[0],
+                          birthday:               employee_array[1],
+                          date_hired:             employee_array[2],
+                          password:               employee_array[3],
+                          password_confirmation:  employee_array[4],
+                          admin:                  employee_array[5],
+                          name:                   employee_array[6],
+                          contact_no:             employee_array[7],
+                          account_no:             employee_array[8],
+                          bank:                   employee_array[9],
+                          base_salary:            employee_array[10],
+                          no_of_dependents:       employee_array[11],
+                          address:                employee_array[12],
+                          sss_no:                 employee_array[13],
+                          tin_no:                 employee_array[14],
+                          pagibig_no:             employee_array[15],
+                          philhealth_no:          employee_array[16],
+                          position:               employee_array[17],
+                          job:                    employee_array[18],
+                          status:                 employee_array[19],
+        )
+    end
+    @user.save
+    flash[:success] = "Users created!"
+    redirect_to signup_path
   end
 
   def edit
@@ -138,6 +178,8 @@ class UsersController < ApplicationController
         end
       end
   end
+
+  
 
   private
 
